@@ -364,6 +364,27 @@
     "tiny-weather-rescue": { gameplay: "Helper Choice", genre: ["Puzzle", "Care", "Animal"] },
   };
 
+  const localizedGameplayProfiles = {
+    "zh-Hant": {
+      "wonder-crash": { gameplay: "自動武器防衛", genre: ["動作", "防衛", "動物"] },
+      "color-lunchbox": { gameplay: "顏色分類", genre: ["幼兒", "教育", "動物"] },
+      "bubble-bakery": { gameplay: "泡泡配對益智", genre: ["益智", "邏輯", "動物"] },
+      "animal-zoo-idle": { gameplay: "動物園放置照顧", genre: ["放置", "經營", "動物"] },
+      "star-memory": { gameplay: "記憶配對", genre: ["記憶", "益智", "動物"] },
+      "campus-dash": { gameplay: "路線跑酷", genre: ["跑酷", "反應", "動物"] },
+      "snack-blocks": { gameplay: "三消益智", genre: ["益智", "邏輯", "動物"] },
+      "fruit-merge": { gameplay: "物理合成", genre: ["合成", "物理", "動物"] },
+      "garden-tiles": { gameplay: "方塊配對", genre: ["益智", "放鬆", "動物"] },
+      "animal-rescue": { gameplay: "路線選擇", genre: ["益智", "冒險", "動物"] },
+      "animal-hidden-safari": { gameplay: "找找看", genre: ["益智", "草原探險", "動物"] },
+      "animal-guard-yard": { gameplay: "路線防衛", genre: ["策略", "防衛", "動物"] },
+      "animal-quiz": { gameplay: "動物問答", genre: ["問答", "教育", "動物"] },
+      "zoo-helper-day": { gameplay: "動物照顧", genre: ["幼兒", "教育", "動物"] },
+      "shape-train": { gameplay: "形狀分類", genre: ["幼兒", "教育", "動物"] },
+      "tiny-weather-rescue": { gameplay: "幫忙選擇", genre: ["益智", "照顧", "動物"] },
+    },
+  };
+
   const localizedGames = {
     "zh-Hant": {
       "wonder-crash": {
@@ -565,7 +586,15 @@
     const base = games[id];
     const override = localizedGames[locale()]?.[id] || {};
     const profile = gameplayProfiles[id] || {};
-    return { ...base, ...profile, ...override, skills: override.skills || base.skills, genre: override.genre || profile.genre || [] };
+    const localizedProfile = localizedGameplayProfiles[locale()]?.[id] || {};
+    return {
+      ...base,
+      ...profile,
+      ...localizedProfile,
+      ...override,
+      skills: override.skills || base.skills,
+      genre: override.genre || localizedProfile.genre || profile.genre || [],
+    };
   }
 
   function relatedGames(activeId, activeBaseGame) {
@@ -758,9 +787,15 @@
 
   window.addEventListener("wonder:locale-change", render);
   document.addEventListener("change", (event) => {
-    if (event.target?.id === "localeSelect") rerenderAfterLocaleSelect();
+    if (event.target?.id === "localeSelect") {
+      window.WonderI18n?.setLocale?.(event.target.value);
+      rerenderAfterLocaleSelect();
+    }
   });
   document.addEventListener("input", (event) => {
-    if (event.target?.id === "localeSelect") rerenderAfterLocaleSelect();
+    if (event.target?.id === "localeSelect") {
+      window.WonderI18n?.setLocale?.(event.target.value);
+      rerenderAfterLocaleSelect();
+    }
   });
 })();
