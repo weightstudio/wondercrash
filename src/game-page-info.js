@@ -715,7 +715,7 @@
         <img src="${escapeHtml(assetHref(coverImages[gameId] || "weightplay-og.png"))}" alt="" />
         <span class="game-info-related-copy">
           <strong>${escapeHtml(game.title)}</strong>
-          <span>${escapeHtml(game.gameplay || shortDescription(game))}</span>
+          <span>${escapeHtml(shortDescription(game))}</span>
         </span>
       </a>
     `;

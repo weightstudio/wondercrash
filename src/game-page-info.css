@@ -280,7 +280,7 @@ body.has-game-page-info :is(.level-list, .level-grid, .stage-list, .stage-grid, 
 .game-info-related-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1;
   object-fit: cover;
   background: #e6eef8;
 }
