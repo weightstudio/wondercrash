@@ -211,6 +211,16 @@ body.has-game-page-info :is(.level-list, .level-grid, .stage-list, .stage-grid, 
   background: linear-gradient(180deg, #fff9df, #fff);
 }
 
+.game-info-strategy {
+  border-color: #b6c6ff;
+  background: linear-gradient(180deg, #f3f6ff, #fff);
+}
+
+.game-info-strategy li::marker {
+  color: #4e65c9;
+  font-weight: 900;
+}
+
 .game-info-progress {
   border-color: #b8e0c9;
   background: linear-gradient(180deg, #f0fff6, #fff);
