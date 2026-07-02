@@ -28,13 +28,22 @@
     windy: { icon: "\u{1F32C}\u{FE0F}", tool: "house", scene: "windy" },
   };
 
+  const animalAssets = {
+    rabbit: "../../assets/tiny-weather-animal-rabbit.png",
+    fox: "../../assets/tiny-weather-animal-fox.png",
+    panda: "../../assets/tiny-weather-animal-panda.png",
+    penguin: "../../assets/tiny-weather-animal-penguin.png",
+    lion: "../../assets/tiny-weather-animal-lion.png",
+    koala: "../../assets/tiny-weather-animal-koala.png",
+  };
+
   const stages = [
-    { animal: "\u{1F430}", theme: "garden", rounds: ["rain", "puddle", "hungry", "heat"], choices: ["umbrella", "towel", "apple", "fan"], target: 3 },
-    { animal: "\u{1F98A}", theme: "forest", rounds: ["dark", "thunder", "rain", "cold"], choices: ["lantern", "house", "umbrella", "blanket"], target: 3 },
-    { animal: "\u{1F43C}", theme: "bamboo", rounds: ["muddy", "puddle", "heat", "hungry", "rain"], choices: ["boots", "towel", "fan", "apple", "umbrella"], target: 4 },
-    { animal: "\u{1F427}", theme: "ice", rounds: ["cold", "dark", "windy", "thunder", "puddle"], choices: ["blanket", "lantern", "house", "towel", "umbrella"], target: 4 },
-    { animal: "\u{1F981}", theme: "savanna", rounds: ["heat", "hungry", "muddy", "thunder", "rain", "cold"], choices: ["fan", "apple", "boots", "house", "umbrella", "blanket"], target: 5 },
-    { animal: "\u{1F428}", theme: "tree", rounds: ["rain", "dark", "windy", "puddle", "hungry", "cold"], choices: ["umbrella", "lantern", "house", "towel", "apple", "blanket", "fan"], target: 5 },
+    { animalId: "rabbit", theme: "garden", rounds: ["rain", "puddle", "hungry", "heat"], choices: ["umbrella", "towel", "apple", "fan"], target: 3 },
+    { animalId: "fox", theme: "forest", rounds: ["dark", "thunder", "rain", "cold"], choices: ["lantern", "house", "umbrella", "blanket"], target: 3 },
+    { animalId: "panda", theme: "bamboo", rounds: ["muddy", "puddle", "heat", "hungry", "rain"], choices: ["boots", "towel", "fan", "apple", "umbrella"], target: 4 },
+    { animalId: "penguin", theme: "ice", rounds: ["cold", "dark", "windy", "thunder", "puddle"], choices: ["blanket", "lantern", "house", "towel", "umbrella"], target: 4 },
+    { animalId: "lion", theme: "savanna", rounds: ["heat", "hungry", "muddy", "thunder", "rain", "cold"], choices: ["fan", "apple", "boots", "house", "umbrella", "blanket"], target: 5 },
+    { animalId: "koala", theme: "tree", rounds: ["rain", "dark", "windy", "puddle", "hungry", "cold"], choices: ["umbrella", "lantern", "house", "towel", "apple", "blanket", "fan"], target: 5 },
   ].map((stage, index) => ({ ...stage, id: index + 1 }));
 
   const text = {
@@ -79,6 +88,12 @@
       muddy: "The path is muddy.",
       cold: "It is too cold.",
       windy: "The wind is too strong.",
+      rabbit: "Rabbit",
+      fox: "Fox",
+      panda: "Panda",
+      penguin: "Penguin",
+      lion: "Lion",
+      koala: "Koala",
       umbrella: "Umbrella",
       towel: "Towel",
       fan: "Fan",
@@ -129,6 +144,12 @@
       muddy: "\u8def\u4e0a\u90fd\u662f\u6ce5\u5df4\u3002",
       cold: "\u5929\u6c23\u592a\u51b7\u4e86\u3002",
       windy: "\u98a8\u592a\u5927\u4e86\u3002",
+      rabbit: "\u5154\u5b50",
+      fox: "\u72d0\u72f8",
+      panda: "\u8c93\u718a",
+      penguin: "\u4f01\u9d5d",
+      lion: "\u7345\u5b50",
+      koala: "\u7121\u5c3e\u718a",
       umbrella: "\u96e8\u5098",
       towel: "\u6bdb\u5dfe",
       fan: "\u98a8\u6247",
@@ -239,9 +260,12 @@
       const best = records[stageNo] || 0;
       const firstProblem = problems[stage.rounds[0]];
       button.innerHTML = `
-        <b>${stage.animal} ${firstProblem.icon}</b>
+        <b class="stage-animal">
+          <img src="${animalAssets[stage.animalId]}" alt="" />
+          <span>${firstProblem.icon}</span>
+        </b>
         <strong>${t("stage", { n: stageNo })}</strong>
-        <span>${t("goal", { target: stage.target })} \u00b7 ${"\u2605".repeat(best)}${"\u2606".repeat(3 - best)}</span>
+        <span>${t(stage.animalId)} \u00b7 ${t("goal", { target: stage.target })} \u00b7 ${"\u2605".repeat(best)}${"\u2606".repeat(3 - best)}</span>
       `;
       button.addEventListener("click", () => {
         if (stageNo > unlocked) {
@@ -289,7 +313,7 @@
           <div class="problem-bubble">${problem.icon}</div>
           <div class="animal-zone" data-drop-zone="true">
             <div class="animal-shadow"></div>
-            <div class="animal-face">${stage.animal}</div>
+            <img class="animal-sprite" src="${animalAssets[stage.animalId]}" alt="${t(stage.animalId)}" />
           </div>
           <div class="need-line">${t(problemKey)}</div>
         </div>
