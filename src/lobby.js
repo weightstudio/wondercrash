@@ -21,6 +21,7 @@ const heroGamesTitle = document.querySelector("#heroGamesTitle");
 const dailyReward = document.querySelector("#dailyReward");
 const i18n = window.WonderI18n;
 const favoritesKey = "weightplayFavoriteGames";
+const recentGamesKey = "weightplayRecentGames";
 const dailyRewardKey = "weightplayDailyReward";
 const walletBar = document.querySelector("#walletBar");
 const dailyRewardTrack = [5, 6, 8, 10, 12, 15, 25];
@@ -30,6 +31,7 @@ let activeSkill = "all";
 let activeLibrary = "all";
 let toastTimer = null;
 let favoriteGameIds = readFavorites();
+let recentGameIds = readRecentGames();
 let gameStats = { source: "pending", windowDays: 7, totals: { plays7d: 0, playsTotal: 0, users7d: 0 }, games: {} };
 
 function text(value) {
@@ -75,8 +77,34 @@ function saveFavorites() {
   }
 }
 
+function readRecentGames() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(recentGamesKey) || "[]");
+    return Array.isArray(saved) ? saved.filter((id) => typeof id === "string").slice(0, 8) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveRecentGames() {
+  try {
+    localStorage.setItem(recentGamesKey, JSON.stringify(recentGameIds.slice(0, 8)));
+  } catch {
+    // Recent history storage is optional.
+  }
+}
+
+function recordRecentGame(gameId) {
+  recentGameIds = [gameId, ...recentGameIds.filter((id) => id !== gameId)].slice(0, 8);
+  saveRecentGames();
+}
+
 function isFavorite(gameId) {
   return favoriteGameIds.includes(gameId);
+}
+
+function isRecent(gameId) {
+  return recentGameIds.includes(gameId);
 }
 
 function statFor(game) {
@@ -135,6 +163,7 @@ async function loadGameStats() {
 
 function openGame(game, title, ageLabel) {
   window.WonderSound?.play("click");
+  recordRecentGame(game.id);
   window.WonderAnalytics?.track("game_open", {
     game_id: game.id,
     game_title: title,
@@ -173,6 +202,8 @@ function createGameCard(game) {
   card.dataset.skill = (game.skills || []).join("|");
   card.dataset.gameId = game.id;
   card.dataset.favorite = favorite ? "true" : "false";
+  card.dataset.recent = isRecent(game.id) ? "true" : "false";
+  card.dataset.recentIndex = String(recentGameIds.indexOf(game.id));
 
   if (isPlayable) {
     card.tabIndex = 0;
@@ -420,9 +451,13 @@ function applyFilter() {
     const matchesAge = activeFilter === "all" || ages.includes(activeFilter);
     const matchesTopic = activeTopic === "all" || topics.includes(activeTopic);
     const matchesSkill = activeSkill === "all" || skills.includes(activeSkill);
-    const matchesLibrary = activeLibrary === "all" || card.dataset.favorite === "true";
+    const matchesLibrary =
+      activeLibrary === "all" ||
+      (activeLibrary === "favorites" && card.dataset.favorite === "true") ||
+      (activeLibrary === "recent" && card.dataset.recent === "true");
     const isVisible = matchesAge && matchesTopic && matchesSkill && matchesLibrary;
     card.classList.toggle("hidden", !isVisible);
+    card.style.order = activeLibrary === "recent" && card.dataset.recentIndex !== "-1" ? card.dataset.recentIndex : "";
     if (isVisible) visibleCount += 1;
   });
 
@@ -431,9 +466,14 @@ function applyFilter() {
   filterStatus.classList.toggle("empty", visibleCount === 0);
 
   if (visibleCount === 0) {
-    filterStatus.textContent = activeLibrary === "favorites" ? i18n.t("status.no_favorites") : i18n.t("status.no_games");
+    filterStatus.textContent =
+      activeLibrary === "favorites" ? i18n.t("status.no_favorites") : activeLibrary === "recent" ? i18n.t("status.no_recent") : i18n.t("status.no_games");
   } else if (activeLibrary === "favorites" && activeFilter === "all" && activeTopic === "all" && activeSkill === "all") {
     filterStatus.textContent = i18n.t(visibleCount > 1 ? "status.favorite_games" : "status.favorite_games_one", {
+      count: visibleCount,
+    });
+  } else if (activeLibrary === "recent" && activeFilter === "all" && activeTopic === "all" && activeSkill === "all") {
+    filterStatus.textContent = i18n.t(visibleCount > 1 ? "status.recent_games" : "status.recent_games_one", {
       count: visibleCount,
     });
   } else if (isFiltered) {
