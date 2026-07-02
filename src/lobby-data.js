@@ -36,7 +36,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/wonder-crash-cover.png",
+        background: "assets/wonder-crash-cover.webp",
         hero: "assets/hero.png",
         hideHero: true,
       },
@@ -87,7 +87,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/bubble-bakery-cover.png",
+        background: "assets/bubble-bakery-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -112,7 +112,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/animal-zoo-idle-cover.png",
+        background: "assets/animal-zoo-idle-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -162,7 +162,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/campus-dash-cover.png",
+        background: "assets/campus-dash-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -187,7 +187,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/snack-blocks-cover.png",
+        background: "assets/snack-blocks-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -212,7 +212,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/fruit-merge-cover.png",
+        background: "assets/fruit-merge-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -237,7 +237,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/garden-tiles-cover.png",
+        background: "assets/garden-tiles-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -262,7 +262,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/animal-rescue-cover.png",
+        background: "assets/animal-rescue-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -287,7 +287,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/animal-hidden-safari-cover.png",
+        background: "assets/animal-hidden-safari-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -312,8 +312,8 @@
       },
       art: {
         kind: "image",
-        background: "assets/animal-guard-yard-poster.png",
-        hero: "assets/animal-guard-yard-poster.png",
+        background: "assets/animal-guard-yard-poster.webp",
+        hero: "assets/animal-guard-yard-poster.webp",
         hideHero: true,
       },
     },
@@ -363,7 +363,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/zoo-helper-day-cover.png",
+        background: "assets/zoo-helper-day-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -388,7 +388,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/shape-train-cover.png",
+        background: "assets/shape-train-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -413,7 +413,7 @@
       },
       art: {
         kind: "image",
-        background: "assets/tiny-weather-rescue-cover.png",
+        background: "assets/tiny-weather-rescue-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
