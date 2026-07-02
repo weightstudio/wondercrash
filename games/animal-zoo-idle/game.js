@@ -22,12 +22,15 @@
   };
 
   const animals = [
-    { id: "lion", asset: ASSETS.lion, baseIncome: 8, cost: 0, care: 8, x: 24, y: 18, size: 30 },
-    { id: "giraffe", asset: ASSETS.giraffe, baseIncome: 16, cost: 360, care: 10, x: 67, y: 8, size: 35 },
-    { id: "elephant", asset: ASSETS.elephant, baseIncome: 28, cost: 980, care: 12, x: 43, y: 34, size: 26 },
-    { id: "panda", asset: ASSETS.panda, baseIncome: 42, cost: 2100, care: 14, x: 78, y: 40, size: 21 },
-    { id: "penguin", asset: ASSETS.penguin, baseIncome: 58, cost: 4200, care: 16, x: 58, y: 48, size: 18 },
+    { id: "lion", asset: ASSETS.lion, baseIncome: 3, cost: 0, care: 5, x: 21, y: 34, size: 24 },
+    { id: "giraffe", asset: ASSETS.giraffe, baseIncome: 7, cost: 650, care: 7, x: 72, y: 37, size: 29 },
+    { id: "elephant", asset: ASSETS.elephant, baseIncome: 13, cost: 2400, care: 9, x: 42, y: 23, size: 24 },
+    { id: "panda", asset: ASSETS.panda, baseIncome: 20, cost: 8200, care: 10, x: 82, y: 22, size: 18 },
+    { id: "penguin", asset: ASSETS.penguin, baseIncome: 30, cost: 24000, care: 11, x: 58, y: 15, size: 16 },
   ];
+
+  const maxGateLevel = 8;
+  const careCooldownMs = 30000;
 
   const visitorAssets = [ASSETS.visitorChild, ASSETS.visitorElder, ASSETS.visitorFamily];
 
@@ -57,6 +60,7 @@
       notEnough: "Need more coins.",
       collected: "Collected {coins} coins.",
       cared: "Animals are happier. More visitors are coming.",
+      careWait: "Care is resting for {n}s.",
       upgraded: "The gate looks better. Ticket income increased!",
       recruited: "{name} joined the zoo!",
       maxGate: "Max Gate",
@@ -106,6 +110,44 @@
     },
   };
 
+  text["zh-Hant"] = {
+    title: "\u52d5\u7269\u5c0f\u5c0f\u6a02\u5712",
+    language: "\u8a9e\u8a00",
+    menuTitle: "\u5efa\u8a2d\u4e00\u5ea7\u6703\u6210\u9577\u7684\u52d5\u7269\u6a02\u5712\u3002",
+    menuHint: "\u6b61\u8fce\u53c3\u89c0\u8005\u3001\u6536\u96c6\u9580\u7968\u6536\u5165\u3001\u5347\u7d1a\u5927\u9580\uff0c\u4e26\u62db\u52df\u66f4\u591a\u52d5\u7269\u4f86\u64f4\u5efa\u6a02\u5712\u3002",
+    start: "\u958b\u5712",
+    coins: "\u91d1\u5e63",
+    tickets: "\u7968\u7bb1",
+    visitors: "\u53c3\u89c0\u8005",
+    report: "\u5831\u544a",
+    reportTitle: "\u6a02\u5712\u6210\u9577\u5831\u544a",
+    continue: "\u7e7c\u7e8c",
+    loading: "\u8f09\u5165\u4e2d",
+    collect: "\u6536\u7968",
+    careAll: "\u7167\u9867",
+    upgradeGate: "\u5347\u7d1a\u5927\u9580",
+    recruit: "\u62db\u52df",
+    gate: "\u5927\u9580 Lv.{n}",
+    income: "{n}/10\u79d2",
+    happiness: "\u5feb\u6a02\u5ea6",
+    animals: "\u52d5\u7269",
+    offline: "\u6b61\u8fce\u56de\u4f86\uff01\u53c3\u89c0\u8005\u5728\u7968\u7bb1\u7559\u4e0b {coins} \u91d1\u5e63\u3002",
+    notEnough: "\u91d1\u5e63\u4e0d\u5920\u3002",
+    collected: "\u6536\u5230 {coins} \u91d1\u5e63\u3002",
+    cared: "\u52d5\u7269\u5011\u66f4\u958b\u5fc3\u4e86\uff01",
+    careWait: "\u7167\u9867\u9700\u8981\u4f11\u606f {n} \u79d2\u3002",
+    upgraded: "\u5927\u9580\u8b8a\u66f4\u6f02\u4eae\uff0c\u9580\u7968\u6536\u5165\u63d0\u5347\u4e86\uff01",
+    recruited: "{name} \u52a0\u5165\u6a02\u5712\uff01",
+    maxGate: "\u5927\u9580\u5df2\u6eff\u7d1a",
+    reportGood: "\u7167\u9867\u5f97\u5f88\u597d\uff01\u4f60\u7684\u52d5\u7269\u5712\u6b63\u5728\u7a69\u5b9a\u6210\u9577\u3002",
+    reportTry: "\u8868\u73fe\u4e0d\u932f\uff01\u62db\u52df\u52d5\u7269\u548c\u5347\u7d1a\u5927\u9580\u53ef\u4ee5\u8b93\u6a02\u5712\u6210\u9577\u66f4\u5feb\u3002",
+    lion: "\u7345\u5b50",
+    giraffe: "\u9577\u9838\u9e7f",
+    elephant: "\u5927\u8c61",
+    panda: "\u718a\u8c93",
+    penguin: "\u4f01\u9d5d",
+  };
+
   const $ = (id) => document.getElementById(id);
   const nodes = {
     localeSelect: $("localeSelect"),
@@ -146,6 +188,7 @@
       happiness: 76,
       playCount: 0,
       careCount: 0,
+      careReadyAt: 0,
       bestScore: 0,
       lastScore: 0,
       lastPlayedAt: Date.now(),
@@ -177,8 +220,9 @@
     data.unlocked = { lion: true, ...(data.unlocked || {}) };
     data.coins = Math.max(0, Number(data.coins || 0));
     data.ticketBox = Math.max(0, Number(data.ticketBox || 0));
-    data.gateLevel = clamp(Math.floor(Number(data.gateLevel || 1)), 1, 3);
+    data.gateLevel = clamp(Math.floor(Number(data.gateLevel || 1)), 1, maxGateLevel);
     data.happiness = clamp(Number(data.happiness || 76), 18, 100);
+    data.careReadyAt = Math.max(0, Number(data.careReadyAt || 0));
     return data;
   }
 
@@ -200,18 +244,29 @@
   }
 
   function gateUpgradeCost() {
-    return save.gateLevel >= 3 ? 0 : 420 * save.gateLevel;
+    return save.gateLevel >= maxGateLevel ? 0 : Math.round(620 * save.gateLevel * save.gateLevel * 1.22);
   }
 
   function incomePerTick() {
     const animalIncome = unlockedAnimals().reduce((sum, animal) => sum + animal.baseIncome, 0);
-    const gateBonus = 1 + (save.gateLevel - 1) * 0.45;
-    const happyBonus = 0.55 + save.happiness / 100;
-    return Math.max(4, Math.round(animalIncome * gateBonus * happyBonus));
+    const gateBonus = 1 + (save.gateLevel - 1) * 0.22;
+    const happyBonus = 0.45 + save.happiness / 180;
+    return Math.max(2, Math.round(animalIncome * gateBonus * happyBonus));
   }
 
   function visitorCount() {
-    return clamp(Math.ceil(incomePerTick() / 26), 2, 8);
+    return clamp(Math.ceil(incomePerTick() / 18), 2, 6);
+  }
+
+  function formatNumber(value) {
+    const number = Math.floor(Number(value || 0));
+    if (number >= 1000000) return `${Math.round((number / 1000000) * 10) / 10}M`;
+    if (number >= 10000) return `${Math.round((number / 1000) * 10) / 10}K`;
+    return String(number);
+  }
+
+  function careWaitSeconds() {
+    return Math.max(0, Math.ceil((Number(save.careReadyAt || 0) - Date.now()) / 1000));
   }
 
   function applyOffline() {
@@ -219,7 +274,7 @@
     const earned = Math.floor((elapsedSeconds / 10) * incomePerTick() * 0.55);
     if (earned > 0) {
       save.ticketBox += earned;
-      nodes.offlineNotice.textContent = t("offline", { coins: earned });
+      nodes.offlineNotice.textContent = t("offline", { coins: formatNumber(earned) });
       nodes.offlineNotice.classList.remove("hidden");
       window.setTimeout(() => nodes.offlineNotice.classList.add("hidden"), 3200);
     }
@@ -235,8 +290,8 @@
   }
 
   function render() {
-    nodes.coinText.textContent = Math.floor(save.coins);
-    nodes.incomeText.textContent = Math.floor(save.ticketBox);
+    nodes.coinText.textContent = formatNumber(save.coins);
+    nodes.incomeText.textContent = formatNumber(save.ticketBox);
     const card = nodes.habitatGrid.querySelector(".zoo-stage-card");
     if (!card) {
       nodes.habitatGrid.appendChild(renderPark());
@@ -252,7 +307,7 @@
     card.innerHTML = `
       <div class="park-hud">
         <strong>${t("gate", { n: save.gateLevel })}</strong>
-        <span>${t("income", { n: incomePerTick() })}</span>
+        <span>${t("income", { n: formatNumber(incomePerTick()) })}</span>
         <span>${t("animals")}: ${unlockedAnimals().length}/${animals.length}</span>
       </div>
       <div class="savanna-stage stage-lv-${save.gateLevel}" aria-label="Safari park">
@@ -267,8 +322,8 @@
         <div class="zoo-actions">
           <button type="button" data-action="collect">${t("collect")}</button>
           <button type="button" data-action="care">${t("careAll")}</button>
-          <button type="button" data-action="upgrade" ${save.gateLevel >= 3 ? "disabled" : ""}>${save.gateLevel >= 3 ? t("maxGate") : `${t("upgradeGate")} ${gateUpgradeCost()}`}</button>
-          <button type="button" data-action="recruit" ${next ? "" : "disabled"}>${next ? `${t("recruit")} ${t(next.id)} ${next.cost}` : `${t("animals")} Max`}</button>
+          <button type="button" data-action="upgrade" ${save.gateLevel >= maxGateLevel ? "disabled" : ""}>${save.gateLevel >= maxGateLevel ? t("maxGate") : `${t("upgradeGate")} ${formatNumber(gateUpgradeCost())}`}</button>
+          <button type="button" data-action="recruit" ${next ? "" : "disabled"}>${next ? `${t("recruit")} ${t(next.id)} ${formatNumber(next.cost)}` : `${t("animals")} Max`}</button>
         </div>
       </div>
     `;
@@ -288,7 +343,7 @@
     const hud = card.querySelector(".park-hud");
     if (hud) {
       hud.children[0].textContent = t("gate", { n: save.gateLevel });
-      hud.children[1].textContent = t("income", { n: incomePerTick() });
+      hud.children[1].textContent = t("income", { n: formatNumber(incomePerTick()) });
       hud.children[2].textContent = `${t("animals")}: ${unlockedAnimals().length}/${animals.length}`;
     }
     const stage = card.querySelector(".savanna-stage");
@@ -304,13 +359,19 @@
     if (happyFill) happyFill.style.width = `${save.happiness}%`;
     const upgrade = card.querySelector('[data-action="upgrade"]');
     if (upgrade) {
-      upgrade.disabled = save.gateLevel >= 3;
-      upgrade.textContent = save.gateLevel >= 3 ? t("maxGate") : `${t("upgradeGate")} ${gateUpgradeCost()}`;
+      upgrade.disabled = save.gateLevel >= maxGateLevel;
+      upgrade.textContent = save.gateLevel >= maxGateLevel ? t("maxGate") : `${t("upgradeGate")} ${formatNumber(gateUpgradeCost())}`;
     }
     const recruit = card.querySelector('[data-action="recruit"]');
     if (recruit) {
       recruit.disabled = !next;
-      recruit.textContent = next ? `${t("recruit")} ${t(next.id)} ${next.cost}` : `${t("animals")} Max`;
+      recruit.textContent = next ? `${t("recruit")} ${t(next.id)} ${formatNumber(next.cost)}` : `${t("animals")} Max`;
+    }
+    const care = card.querySelector('[data-action="care"]');
+    if (care) {
+      const waitSeconds = careWaitSeconds();
+      care.disabled = waitSeconds > 0;
+      care.textContent = waitSeconds > 0 ? `${t("careAll")} ${waitSeconds}s` : t("careAll");
     }
     const animalLayer = card.querySelector(".animal-layer");
     const animalIds = unlockedAnimals().map((animal) => animal.id).join(",");
@@ -322,8 +383,8 @@
   }
 
   function gateAsset() {
-    if (save.gateLevel >= 3) return ASSETS.gate3;
-    if (save.gateLevel >= 2) return ASSETS.gate2;
+    if (save.gateLevel >= 6) return ASSETS.gate3;
+    if (save.gateLevel >= 3) return ASSETS.gate2;
     return ASSETS.gate1;
   }
 
@@ -362,17 +423,24 @@
     }
     save.coins += amount;
     save.ticketBox = 0;
-    popToast(t("collected", { coins: amount }));
+    popToast(t("collected", { coins: formatNumber(amount) }));
     playSound("coin");
     saveGame();
     render();
   }
 
   function careAnimals() {
+    const waitSeconds = careWaitSeconds();
+    if (waitSeconds > 0) {
+      popToast(t("careWait", { n: waitSeconds }));
+      playSound("error");
+      render();
+      return;
+    }
     save.careCount += 1;
     const gain = unlockedAnimals().reduce((sum, animal) => sum + animal.care, 0);
-    save.happiness = clamp(save.happiness + gain / 3, 18, 100);
-    save.ticketBox += Math.round(incomePerTick() * 0.6);
+    save.happiness = clamp(save.happiness + gain, 18, 100);
+    save.careReadyAt = Date.now() + careCooldownMs;
     popHearts();
     popToast(t("cared"));
     playSound("success");
@@ -471,9 +539,13 @@
     if (nodes.gamePanel.classList.contains("hidden")) return;
     tickCount += 1;
     save.ticketBox += incomePerTick();
-    save.happiness = clamp(save.happiness - 0.42, 18, 100);
+    save.happiness = clamp(save.happiness - 0.28, 18, 100);
     if (tickCount % 3 === 0) saveGame();
     render();
+  }
+
+  function tickUi() {
+    if (!nodes.gamePanel.classList.contains("hidden")) render();
   }
 
   function loadAssets() {
@@ -529,5 +601,6 @@
   localizeStatic();
   loadAssets();
   render();
+  window.setInterval(tickUi, 1000);
   window.setInterval(tickPark, 10000);
 })();

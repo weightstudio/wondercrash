@@ -9,7 +9,7 @@ const reportPath = path.join(root, "docs", "analytics-latest-report.md");
 const propertyId = process.env.GA4_PROPERTY_ID || "";
 const clientEmail = process.env.GA4_CLIENT_EMAIL || "";
 const privateKey = (process.env.GA4_PRIVATE_KEY || "").replace(/\\n/g, "\n");
-const sitePathPrefix = process.env.GA4_SITE_PATH_PREFIX || "/weightplay";
+const sitePathPrefix = process.env.GA4_SITE_PATH_PREFIX ?? "";
 const lookbackDays = Math.max(1, Number(process.env.GA4_LOOKBACK_DAYS || 7) || 7);
 
 function base64Url(input) {

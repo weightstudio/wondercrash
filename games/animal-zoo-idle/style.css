@@ -203,11 +203,13 @@ select {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
+  min-height: 54px;
 }
 
 .park-hud strong,
 .park-hud span {
   min-height: 38px;
+  height: 46px;
   border-radius: 14px;
   padding: 8px;
   display: grid;
@@ -216,6 +218,8 @@ select {
   box-shadow: inset 0 1px rgba(255,255,255,.8), 0 7px 15px rgba(67,43,20,.12);
   font-weight: 950;
   text-align: center;
+  line-height: 1.08;
+  overflow: hidden;
 }
 
 .savanna-stage {
@@ -254,7 +258,8 @@ select {
 .visitor-line {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .animal {
@@ -606,11 +611,13 @@ body.zoo-playing .zoo-stage-card {
 
 body.zoo-playing .park-hud {
   gap: 5px;
+  min-height: 42px;
 }
 
 body.zoo-playing .park-hud strong,
 body.zoo-playing .park-hud span {
   min-height: 32px;
+  height: 38px;
   padding: 5px;
   border-radius: 10px;
   font-size: clamp(.62rem, 2.5vw, .78rem);
@@ -664,13 +671,13 @@ body.zoo-playing .savanna-stage {
 
 .visitor-line img {
   position: absolute;
-  left: 7%;
-  bottom: calc(14% + var(--lane) * 4%);
-  z-index: 8;
-  width: clamp(42px, 9%, 88px);
+  left: 6%;
+  bottom: calc(4% + var(--lane) * 3%);
+  z-index: 4;
+  width: clamp(36px, 7.5%, 72px);
   height: auto;
   filter: drop-shadow(0 9px 10px rgba(0,0,0,.18));
-  animation: visitor-walk-img 7.4s linear infinite;
+  animation: visitor-walk-img 9.2s linear infinite;
   animation-delay: var(--delay);
 }
 
@@ -720,11 +727,11 @@ body.zoo-playing .zoo-actions button {
 }
 
 @keyframes visitor-walk-img {
-  from { transform: translateX(0) translateY(0) scale(.92); opacity: 0; }
+  from { transform: translateX(0) translateY(0) scale(.84); opacity: 0; }
   10% { opacity: 1; }
-  56% { transform: translateX(min(46vw, 410px)) translateY(-18px) scale(.92); }
+  56% { transform: translateX(min(44vw, 390px)) translateY(-8px) scale(.84); }
   88% { opacity: 1; }
-  to { transform: translateX(min(70vw, 610px)) translateY(-26px) scale(.92); opacity: 0; }
+  to { transform: translateX(min(70vw, 610px)) translateY(-12px) scale(.84); opacity: 0; }
 }
 
 @media (max-width: 720px) {
@@ -748,6 +755,7 @@ body.zoo-playing .zoo-actions button {
 
   body.zoo-playing .park-hud {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-height: 40px;
   }
 
   body.zoo-playing .gate {
@@ -763,7 +771,8 @@ body.zoo-playing .zoo-actions button {
   }
 
   body.zoo-playing .visitor-line img {
-    width: 12%;
+    bottom: calc(3% + var(--lane) * 2.5%);
+    width: 9%;
   }
 
   body.zoo-playing .zoo-actions {
