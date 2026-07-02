@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const GAME_ID = "animal-rope-rescue";
   const localeKey = "weightPlayLocale";
   const saveKey = "weightplay_animal_vine_rescue_save_v1";
@@ -14,7 +14,7 @@
       score: "Score",
       stages: "Stages",
       cut: "Cut",
-      hint: "Drag the leaf. Cut the vine when you are ready.",
+      hint: "Drag the leaf. Tap the vine or fruit top to cut when you are ready.",
       loading: "Loading",
       nextStage: "Next Stage",
       retry: "Try Again",
@@ -30,30 +30,30 @@
     "zh-Hant": {
       title: "動物藤蔓救援",
       language: "語言",
-      menuTitle: "幫飢餓的小動物救水果。",
-      menuHint: "切斷藤蔓、拖曳葉子，把水果彈進動物的籃子裡。",
+      menuTitle: "把水果送給肚子餓的動物。",
+      menuHint: "切斷藤蔓，拖曳葉子，讓水果彈進動物籃子。",
       start: "選擇關卡",
       stage: "關卡",
       score: "分數",
       stages: "選關",
       cut: "切斷",
-      hint: "拖曳葉子，準備好再切斷藤蔓。",
+      hint: "拖曳葉子。準備好時，點藤蔓或水果上方來切斷。",
       loading: "載入中",
       nextStage: "下一關",
-      retry: "再試一次",
+      retry: "再玩一次",
       lobby: "大廳",
-      locked: "關卡未解鎖",
-      successTitle: "救援成功！",
-      failTitle: "再彈一次看看！",
-      successText: "時機很棒！小動物拿到水果了。",
-      failText: "把葉子移到水果下面，再往籃子的方向彈。",
-      completeText: "太厲害了！你完成所有藤蔓救援關卡。",
+      locked: "關卡尚未解鎖",
+      successTitle: "水果送到了！",
+      failTitle: "再試一次彈跳路線！",
+      successText: "時機抓得很好，動物吃到水果了。",
+      failText: "把葉子移到水果下方，讓水果彈向籃子。",
+      completeText: "太棒了！你完成了所有藤蔓救援關卡。",
       stageLabel: "第 {n} 關",
     },
   };
-
   const assets = {
     cover: "../../assets/animal-vine-rescue-cover.png",
+    background: "../../assets/animal-vine-rescue-game-bg.webp",
     vine: "../../assets/animal-vine-rope.png",
     leaf: "../../assets/animal-vine-leaf-paddle.png",
     basket: "../../assets/animal-vine-basket.png",
@@ -300,6 +300,17 @@
     positionElements();
   }
 
+  function isVineCutPointer(event) {
+    if (running || settled || fruit.cut) return false;
+    const rect = nodes.playfield.getBoundingClientRect();
+    const stage = stages[currentStage - 1];
+    const xPct = ((event.clientX - rect.left) / rect.width) * 100;
+    const yPct = ((event.clientY - rect.top) / rect.height) * 100;
+    const nearVine = Math.abs(xPct - stage.startX) <= 12 && yPct <= 48;
+    const nearFruit = Math.abs(xPct - fruit.x) <= 13 && Math.abs(yPct - fruit.y) <= 14;
+    return nearVine || nearFruit;
+  }
+
   function preload() {
     const list = Object.values(assets);
     let loaded = 0;
@@ -337,8 +348,21 @@
     setupStage(stageNo);
     show(nodes.gamePanel);
   });
-  nodes.vineButton.addEventListener("click", cutVine);
+  nodes.vineButton.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    cutVine();
+  });
+  nodes.vineButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    cutVine();
+  });
   nodes.playfield.addEventListener("pointerdown", (event) => {
+    if (isVineCutPointer(event)) {
+      cutVine();
+      return;
+    }
     nodes.playfield.setPointerCapture?.(event.pointerId);
     movePaddle(event.clientX);
   });

@@ -185,7 +185,7 @@ select {
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 28px;
-  background-image: linear-gradient(rgba(255,255,255,.02), rgba(34, 92, 36, .2)), url("../../assets/animal-vine-rescue-cover.png");
+  background-image: linear-gradient(rgba(255,255,255,.06), rgba(48, 117, 43, .12)), url("../../assets/animal-vine-rescue-game-bg.webp");
   background-size: cover;
   background-position: center;
   box-shadow: inset 0 0 0 5px rgba(255, 244, 180, .65), 0 18px 36px rgba(41, 78, 28, .26);
@@ -221,8 +221,8 @@ select {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 58px;
-  height: 42%;
+  width: clamp(82px, 18%, 120px);
+  height: 45%;
   transform: translateX(-50%);
   border: 0;
   background: transparent;
@@ -230,6 +230,8 @@ select {
   display: grid;
   justify-items: center;
   cursor: pointer;
+  z-index: 4;
+  touch-action: manipulation;
 }
 
 .vine-button.cut {
@@ -238,7 +240,7 @@ select {
 }
 
 .vine-img {
-  width: 100%;
+  width: 62%;
   height: 100%;
   object-fit: fill;
   filter: drop-shadow(0 4px 3px rgba(20, 70, 24, .25));

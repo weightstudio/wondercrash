@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const GAME_ID = "fruit-merge";
   const BEST_KEY = "fruitMergeBestScore";
   const PROGRESS_KEY = "weightplay_fruit_merge_progress";
@@ -87,10 +87,10 @@
       score: "分數",
       best: "最佳",
       next: "下一顆",
-      drop: "放下",
-      restart: "重來",
-      menuTitle: "合成動物大球",
-      menuDesc: "小心放下動物球。相同動物會合成下一種更大的動物球，別讓球堆超過紅線。",
+      drop: "落下",
+      restart: "重新開始",
+      menuTitle: "一路合成到長頸鹿",
+      menuDesc: "小心落下動物球。相同動物會合成下一個更大的動物，別讓塔超過紅線。",
       start: "開始",
       gameOver: "遊戲結束",
       result: "分數 {score}  最佳 {best}",
@@ -102,26 +102,25 @@
       logicSkill: "邏輯",
       problemSolvingSkill: "問題解決",
       coordinationSkill: "手眼協調",
-      progressNewBest: "太棒了！你刷新了自己的最佳紀錄。",
-      progressImproved: "很棒的進步！你比上次更會規劃位置了。",
-      progressSteady: "很努力！再試一次可以練習更穩的放置判斷。",
+      progressNewBest: "太棒了！你突破了自己的最佳分數。",
+      progressImproved: "很棒的進步！你比之前更會安排落點了。",
+      progressSteady: "做得很好！再試一次，練習更好的放置位置。",
       progressNote: "分數只用於遊戲樂趣與本機進步紀錄。",
       playAgain: "再玩一次",
       lobby: "大廳",
-      newBest: "新的最佳！",
-      fruit0: "小鼠球",
-      fruit1: "兔兔球",
+      newBest: "新紀錄！",
+      fruit0: "兔兔球",
+      fruit1: "狐狸球",
       fruit2: "貓咪球",
       fruit3: "小狗球",
-      fruit4: "狐狸球",
-      fruit5: "熊貓球",
-      fruit6: "獅子球",
-      fruit7: "老虎球",
-      fruit8: "無尾熊球",
-      fruit9: "熊熊球",
-      fruit10: "長頸鹿球",
-    },
-  };
+      fruit4: "熊貓球",
+      fruit5: "企鵝球",
+      fruit6: "無尾熊球",
+      fruit7: "貓頭鷹球",
+      fruit8: "獅子球",
+      fruit9: "長頸鹿球",
+      fruit10: "大獅王球",
+    },  };
 
   function loadImage(src) {
     const image = new Image();
@@ -143,7 +142,20 @@
     { radius: 166, color: "#2fbd65", accent: "#1d8b45", score: 300 },
   ];
 
-  const tokenImages = fruits.map((_, index) => loadImage(`../../assets/animal-merge-token-${index}.svg`));
+  const tokenSources = [
+    "../../assets/tiny-weather-animal-rabbit.png",
+    "../../assets/tiny-weather-animal-fox.png",
+    "../../assets/animal-guard-cat.png",
+    "../../assets/animal-guard-dog.png",
+    "../../assets/tiny-weather-animal-panda.png",
+    "../../assets/tiny-weather-animal-penguin.png",
+    "../../assets/tiny-weather-animal-koala.png",
+    "../../assets/animal-guard-owl.png",
+    "../../assets/tiny-weather-animal-lion.png",
+    "../../assets/animal-zoo-idle-giraffe.png",
+    "../../assets/weightplay-lion-mascot.png",
+  ];
+  const tokenImages = tokenSources.map((src) => loadImage(src));
 
   let fruitId = 1;
   let fruitsOnBoard = [];
@@ -227,7 +239,7 @@
   function updateHud() {
     scoreText.textContent = score;
     bestText.textContent = bestScore;
-    nextFruitText.innerHTML = fruitSvg(nextLevel);
+    nextFruitText.innerHTML = animalTokenMarkup(nextLevel);
     nextFruitText.setAttribute("aria-label", t(`fruit${nextLevel}`));
     nextFruitText.title = t(`fruit${nextLevel}`);
   }
@@ -470,7 +482,7 @@
   }
 
   function renderStars(value) {
-    return "★★★★★".slice(0, value) + "☆☆☆☆☆".slice(0, 5 - value);
+    return "★".repeat(value) + "☆".repeat(5 - value);
   }
 
   function renderResultReport(progress, newBest) {
@@ -587,14 +599,32 @@
     ctx.scale(popScale, popScale);
     ctx.rotate(fruit.angle || 0);
 
+    const gradient = ctx.createRadialGradient(-fruit.radius * 0.34, -fruit.radius * 0.42, fruit.radius * 0.12, 0, 0, fruit.radius);
+    gradient.addColorStop(0, spec.accent);
+    gradient.addColorStop(0.48, spec.color);
+    gradient.addColorStop(1, "rgba(23, 32, 51, 0.42)");
+    ctx.beginPath();
+    ctx.arc(0, 0, fruit.radius, 0, Math.PI * 2);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
     if (image?.complete && image.naturalWidth) {
-      ctx.drawImage(image, -fruit.radius, -fruit.radius, fruit.radius * 2, fruit.radius * 2);
-    } else {
+      ctx.save();
       ctx.beginPath();
-      ctx.arc(0, 0, fruit.radius, 0, Math.PI * 2);
-      ctx.fillStyle = spec.color;
-      ctx.fill();
+      ctx.arc(0, 0, fruit.radius * 0.9, 0, Math.PI * 2);
+      ctx.clip();
+      const scale = Math.min((fruit.radius * 1.55) / image.naturalWidth, (fruit.radius * 1.55) / image.naturalHeight);
+      const drawW = image.naturalWidth * scale;
+      const drawH = image.naturalHeight * scale;
+      ctx.drawImage(image, -drawW / 2, -drawH * 0.56, drawW, drawH);
+      ctx.restore();
     }
+
+    ctx.globalAlpha *= 0.34;
+    ctx.beginPath();
+    ctx.ellipse(-fruit.radius * 0.28, -fruit.radius * 0.34, fruit.radius * 0.23, fruit.radius * 0.14, -0.45, 0, Math.PI * 2);
+    ctx.fillStyle = "#fff";
+    ctx.fill();
 
     ctx.restore();
   }
@@ -624,8 +654,8 @@
     }
   }
 
-  function fruitSvg(level) {
-    return `<img src="../../assets/animal-merge-token-${level}.svg" alt="" aria-hidden="true" />`;
+  function animalTokenMarkup(level) {
+    return `<img src="${tokenSources[level]}" alt="" aria-hidden="true" />`;
   }
 
   function roundRect(context, x, y, width, height, radius) {
