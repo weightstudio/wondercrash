@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const GAME_ID = "zoo-helper-day";
   const localeKey = "weightplayLocale";
   const unlockKey = "weightplay_zoo_helper_unlocked";
@@ -47,24 +47,24 @@
       },
     },
     "zh-Hant": {
-      gameTitle: "動物園小幫手",
+      gameTitle: "動物園幫忙日",
       language: "語言",
       chooseStage: "選擇關卡",
-      menuHint: "幫助動物完成溫和的照顧任務。",
+      menuHint: "幫動物完成溫柔的照顧任務。",
       stages: "關卡",
       loading: "載入中",
       nextStage: "下一關",
       retry: "再試一次",
       lobby: "大廳",
       locked: "關卡尚未解鎖",
-      great: "很棒！",
+      great: "做得很好！",
       perfect: "完美小幫手！",
-      good: "很好的幫忙！",
-      keep: "繼續幫助動物！",
+      good: "很棒的小幫手！",
+      keep: "繼續幫忙！",
       result: "你幫 {animal} 完成了 {count} 個任務。",
       stage: "第 {n} 關",
-      task: "{animal} 需要 {item}。",
-      correct: "幫得很好！",
+      task: "{animal} 需要{item}。",
+      correct: "幫得真好！",
       wrong: "試試看其他道具。",
       items: {
         fruit: "水果",
@@ -72,7 +72,7 @@
         brush: "刷子",
         toy: "玩具",
         leaf: "葉子",
-        shower: "淋浴",
+        shower: "沖澡",
         fish: "魚",
         ball: "球",
       },

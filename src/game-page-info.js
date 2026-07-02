@@ -262,19 +262,19 @@
       ],
     },
     "shape-train": {
-      title: "Shape Train",
+      title: "Animal Shape Train",
       age: "3+",
       difficulty: "Easy",
       time: "1-3 minutes",
       skills: ["Color Recognition", "Logic", "Hand-Eye Coordination"],
       intro:
-        "Shape Train is a preschool animal train game where children help colorful shape passengers board the correct train cars. Each short stage focuses on a small set of visual choices, so young players can practice matching circles, triangles, squares, colors, and animal-themed cargo without needing to read long instructions. The game is built for quick mobile sessions with large targets, gentle feedback, and stage goals that parents can understand at a glance. It supports early classification practice through play while staying relaxed and pressure-free.",
+        "Animal Shape Train is a preschool animal train game where children help colorful shape passengers board the correct train cars. Each short stage focuses on a small set of visual choices, so young players can practice matching circles, triangles, squares, colors, and animal-themed cargo without needing to read long instructions. The game is built for quick mobile sessions with large targets, gentle feedback, and stage goals that parents can understand at a glance. It supports early classification practice through play while staying relaxed and pressure-free.",
       how: ["Look at the animal shape passenger or cargo.", "Find the train car with the matching shape or color.", "Tap or drag the piece into the correct car.", "Fill every train car to finish the stage and unlock the next route."],
       strategyTips: ["Say the shape name out loud before placing it.", "Look at both the outline and the color when a stage has similar pieces.", "If a child misses, encourage another look instead of rushing."],
       parent:
         "This game may help young children practice color recognition, shape sorting, simple logic, and hand-eye coordination through picture-based play. Scores and progress are for encouragement only, not a formal learning test or developmental assessment.",
       faq: [
-        ["Does Shape Train require reading?", "No. The main gameplay uses shapes and colors."],
+        ["Does Animal Shape Train require reading?", "No. The main gameplay uses shapes and colors."],
         ["What age is it for?", "It is recommended for age 3+ because the goals are visual, simple, and short."],
         ["What skills does it practice?", "It practices color recognition, shape sorting, early logic, and hand-eye coordination."],
         ["Can parents play along?", "Yes. Parents can name each shape and color out loud to turn the stage into a short shared practice moment."],

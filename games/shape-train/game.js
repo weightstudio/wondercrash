@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const GAME_ID = "shape-train";
   const localeKey = "weightplayLocale";
   const unlockKey = "weightplay_shape_train_unlocked";
@@ -6,7 +6,7 @@
 
   const text = {
     en: {
-      gameTitle: "Shape Train",
+      gameTitle: "Animal Shape Train",
       language: "Language",
       chooseStage: "Choose Stage",
       menuHint: "Match shape friends to the right train cars.",
@@ -37,17 +37,17 @@
       gameTitle: "動物形狀小火車",
       language: "語言",
       chooseStage: "選擇關卡",
-      menuHint: "把形狀朋友送到正確的車廂。",
+      menuHint: "把形狀朋友送到正確的小火車車廂。",
       stages: "關卡",
       loading: "載入中",
       nextStage: "下一關",
       retry: "再試一次",
       lobby: "大廳",
       locked: "關卡尚未解鎖",
-      perfect: "完美小列車長！",
-      good: "配對得很好！",
-      keep: "再試一次看看！",
-      result: "你幫助 {count} 個形狀朋友搭上火車。",
+      perfect: "完美列車長！",
+      good: "配對很棒！",
+      keep: "繼續練習！",
+      result: "你幫 {count} 位形狀朋友搭上小火車。",
       stage: "第 {n} 關",
       prompt: "把{shape}送到相同形狀的車廂。",
       correct: "上車成功！",
