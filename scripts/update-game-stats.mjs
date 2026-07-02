@@ -170,10 +170,13 @@ async function writeReport(stats, games, note = "") {
 async function main() {
   const games = await readLobbyGames();
   if (!propertyId || !clientEmail || !privateKey) {
+    const note =
+      "GA4 secrets are not configured yet. Add GA4_PROPERTY_ID, GA4_CLIENT_EMAIL, and GA4_PRIVATE_KEY to enable automatic public game stats.";
     try {
       const existing = JSON.parse(await fs.readFile(statsPath, "utf8"));
       if (existing?.games && Object.keys(existing.games).length > 0) {
-        console.warn("GA4 secrets are not configured. Keeping existing game stats.");
+        console.warn("GA4 secrets are not configured. Keeping existing game stats and refreshing the diagnostic report.");
+        await writeReport(existing, games, note);
         return;
       }
     } catch {
@@ -181,11 +184,7 @@ async function main() {
     }
     const stats = emptyStats(games, "pending");
     await fs.writeFile(statsPath, `${JSON.stringify(stats, null, 2)}\n`, "utf8");
-    await writeReport(
-      stats,
-      games,
-      "GA4 secrets are not configured yet. Add GA4_PROPERTY_ID, GA4_CLIENT_EMAIL, and GA4_PRIVATE_KEY to enable automatic public game stats.",
-    );
+    await writeReport(stats, games, note);
     return;
   }
 

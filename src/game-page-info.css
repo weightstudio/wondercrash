@@ -1,22 +1,55 @@
 body.has-game-page-info {
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: block;
-  place-items: initial;
-  touch-action: pan-y;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  display: block !important;
+  place-items: initial !important;
+  touch-action: pan-y !important;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: contain;
   background-color: #111827;
 }
 
 html:has(body.has-game-page-info) {
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  touch-action: pan-y;
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  touch-action: pan-y !important;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: contain;
 }
 
 body.has-game-page-info > main {
   margin-inline: auto;
+}
+
+body.has-game-page-info :is(
+  .level-list,
+  .level-grid,
+  .stage-list,
+  .stage-grid,
+  .stage-selector,
+  .mission-list,
+  .upgrade-list,
+  .inventory-grid,
+  .backpack-grid,
+  .equipment-grid,
+  .modal-body,
+  .result-body,
+  .result-report,
+  .game-menu,
+  .guide-list,
+  .settings-list
+) {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+body.has-game-page-info :is(.level-list, .level-grid, .stage-list, .stage-grid, .mission-list) {
+  overflow-y: auto;
 }
 
 .game-page-info {
