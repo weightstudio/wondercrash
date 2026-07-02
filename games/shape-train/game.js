@@ -63,13 +63,14 @@
     },
   };
 
+  const trainCarAsset = "../../assets/shape-train-car.svg";
   const shapes = {
-    circle: { className: "shape-circle", color: "#ff595e", icon: "●" },
-    square: { className: "shape-square", color: "#1982c4", icon: "■" },
-    triangle: { className: "shape-triangle", color: "#ffca3a", icon: "▲" },
-    star: { className: "shape-star", color: "#8ac926", icon: "★" },
-    diamond: { className: "shape-diamond", color: "#6a4c93", icon: "◆" },
-    heart: { className: "shape-heart", color: "#ff7ab6", icon: "♥" },
+    circle: { token: "../../assets/shape-token-circle.svg" },
+    square: { token: "../../assets/shape-token-square.svg" },
+    triangle: { token: "../../assets/shape-token-triangle.svg" },
+    star: { token: "../../assets/shape-token-star.svg" },
+    diamond: { token: "../../assets/shape-token-diamond.svg" },
+    heart: { token: "../../assets/shape-token-heart.svg" },
   };
 
   const stages = [
@@ -166,7 +167,7 @@
       button.type = "button";
       if (stageNo > unlocked) button.classList.add("locked");
       button.innerHTML = `
-        <b>${stage.cars.map((shape) => shapes[shape].icon).join(" ")}</b>
+        <b class="stage-shapes">${stage.cars.map((shape) => `<img src="${shapes[shape].token}" alt="" />`).join("")}</b>
         <strong>${t("stage", { n: stageNo })}</strong>
         <span>${"★".repeat(stars[stageNo] || 0)}${"☆".repeat(3 - (stars[stageNo] || 0))}</span>
       `;
@@ -214,8 +215,10 @@
       car.className = "train-car";
       car.type = "button";
       car.dataset.shape = shape;
-      car.style.background = `linear-gradient(180deg, ${shapes[shape].color}, ${shade(shapes[shape].color, -20)})`;
-      car.innerHTML = `<span>${shapes[shape].icon}</span>`;
+      car.innerHTML = `
+        <img class="car-art" src="${trainCarAsset}" alt="" />
+        <img class="car-shape" src="${shapes[shape].token}" alt="${t(`shapes.${shape}`)}" />
+      `;
       car.addEventListener("click", () => chooseCar(shape, car));
       car.addEventListener("dragover", (event) => event.preventDefault());
       car.addEventListener("drop", (event) => {
@@ -234,9 +237,8 @@
     nodes.progressFill.style.width = `${(currentTask / stage.tasks.length) * 100}%`;
     nodes.promptText.textContent = t("prompt", { shape: t(`shapes.${currentShape}`) });
     nodes.feedbackText.textContent = "";
-    nodes.passengerShape.className = shape.className;
-    nodes.passengerShape.style.background = shape.color;
-    nodes.passengerBtn.style.borderColor = shape.color;
+    nodes.passengerShape.className = "shape-token";
+    nodes.passengerShape.innerHTML = `<img src="${shape.token}" alt="${t(`shapes.${currentShape}`)}" />`;
     nodes.passengerBtn.classList.remove("wrong");
     selectedPassenger = false;
     markTarget(false);
@@ -301,15 +303,6 @@
     nodes.resultPanel.classList.remove("hidden");
     playSound("win");
     track("game_complete", { level: stageNo, stars: earned, mistakes });
-  }
-
-  function shade(hex, percent) {
-    const value = Number.parseInt(hex.slice(1), 16);
-    const amount = Math.round(2.55 * percent);
-    const r = clamp((value >> 16) + amount, 0, 255);
-    const g = clamp(((value >> 8) & 0xff) + amount, 0, 255);
-    const b = clamp((value & 0xff) + amount, 0, 255);
-    return `#${(0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1)}`;
   }
 
   function showFloatingText(message) {
