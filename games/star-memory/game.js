@@ -60,7 +60,7 @@
   // Local Translations Dictionary
   const dictionary = {
     en: {
-      title: "Star Memory",
+      title: "Animal Star Memory",
       language: "Language",
       chooseLevel: "Choose Level",
       level: "Level {current} / {total}",
