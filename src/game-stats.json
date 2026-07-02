@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-02T16:21:21.690Z",
+  "updatedAt": "2026-07-02T17:41:44.864Z",
   "source": "ga4",
   "windowDays": 7,
   "totals": {
-    "plays7d": 160,
-    "playsTotal": 160,
+    "plays7d": 161,
+    "playsTotal": 161,
     "users7d": 33
   },
   "games": {
@@ -33,8 +33,8 @@
       "rank7d": 7
     },
     "animal-zoo-idle": {
-      "plays7d": 15,
-      "playsTotal": 15,
+      "plays7d": 16,
+      "playsTotal": 16,
       "users7d": 2,
       "rank7d": 4
     },
