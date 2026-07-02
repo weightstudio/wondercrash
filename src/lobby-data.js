@@ -62,7 +62,7 @@ window.WONDER_LOBBY = {
       },
       art: {
         kind: "image",
-        background: "assets/lunchbox-cover.png",
+        background: "assets/lunchbox-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -162,7 +162,7 @@ window.WONDER_LOBBY = {
       },
       art: {
         kind: "image",
-        background: "assets/memory-cover.png",
+        background: "assets/memory-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },
@@ -363,7 +363,7 @@ window.WONDER_LOBBY = {
       },
       art: {
         kind: "image",
-        background: "assets/quiz-cover.png",
+        background: "assets/quiz-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
       },
     },

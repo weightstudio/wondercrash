@@ -185,11 +185,21 @@ select {
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 28px;
-  background-image: linear-gradient(rgba(255,255,255,.06), rgba(48, 117, 43, .12)), url("../../assets/animal-vine-rescue-game-bg.webp");
+  background-image: linear-gradient(rgba(255, 249, 218, .58), rgba(71, 138, 56, .5)), url("../../assets/animal-vine-rescue-game-bg.webp");
   background-size: cover;
   background-position: center;
   box-shadow: inset 0 0 0 5px rgba(255, 244, 180, .65), 0 18px 36px rgba(41, 78, 28, .26);
   touch-action: none;
+}
+
+.playfield::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 34%, rgba(255,255,255,.24), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,246,200,.28));
+  pointer-events: none;
 }
 
 .target-zone {
@@ -201,6 +211,7 @@ select {
   display: grid;
   justify-items: center;
   pointer-events: none;
+  z-index: 3;
 }
 
 #targetAnimal {
@@ -230,7 +241,7 @@ select {
   display: grid;
   justify-items: center;
   cursor: pointer;
-  z-index: 4;
+  z-index: 5;
   touch-action: manipulation;
 }
 
@@ -257,6 +268,30 @@ select {
   font-size: .78rem;
   font-weight: 950;
   box-shadow: 0 4px 9px rgba(39, 76, 26, .18);
+  animation: cutPulse 1.25s ease-in-out infinite;
+}
+
+.cut-now-btn {
+  width: min(100%, 360px);
+  min-height: 54px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #fff8c9 0%, #ffdb63 50%, #d78a28 100%);
+  color: #34200f;
+  box-shadow: inset 0 2px rgba(255,255,255,.72), 0 8px 0 #7c4b20, 0 14px 24px rgba(55, 34, 12, .22);
+  font-size: 1.08rem;
+  font-weight: 950;
+}
+
+.cut-now-btn.cut,
+.cut-now-btn:disabled {
+  opacity: .58;
+  filter: grayscale(.35);
+  transform: translateY(4px);
+  box-shadow: inset 0 2px rgba(255,255,255,.6), 0 4px 0 #7c4b20, 0 8px 18px rgba(55, 34, 12, .16);
 }
 
 .fruit {
@@ -268,6 +303,7 @@ select {
   filter: drop-shadow(0 9px 5px rgba(48, 32, 15, .24));
   pointer-events: none;
   will-change: left, top, rotate;
+  z-index: 3;
 }
 
 .leaf-paddle {
@@ -281,6 +317,8 @@ select {
   filter: drop-shadow(0 8px 6px rgba(30, 70, 24, .24));
   pointer-events: none;
   will-change: left;
+  z-index: 3;
+  animation: paddleReady 1.6s ease-in-out infinite;
 }
 
 .float-text {
@@ -372,6 +410,16 @@ select {
   0% { opacity: 0; transform: translate(-50%, -30%) scale(.85); }
   25% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
   100% { opacity: 0; transform: translate(-50%, -90%) scale(1); }
+}
+
+@keyframes cutPulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.05); }
+}
+
+@keyframes paddleReady {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.03); }
 }
 
 @media (max-width: 560px) {

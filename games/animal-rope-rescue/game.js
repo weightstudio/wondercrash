@@ -14,7 +14,7 @@
       score: "Score",
       stages: "Stages",
       cut: "Cut",
-      hint: "Drag the leaf. Tap the vine or fruit top to cut when you are ready.",
+      hint: "Drag the leaf under the fruit, then press Cut. Keep dragging the leaf while the fruit falls.",
       loading: "Loading",
       nextStage: "Next Stage",
       retry: "Try Again",
@@ -23,7 +23,7 @@
       successTitle: "Fruit rescued!",
       failTitle: "Try that bounce again!",
       successText: "Great timing! The animal got the fruit.",
-      failText: "Move the leaf under the fruit and bounce it toward the basket.",
+      failText: "Keep moving the leaf while the fruit falls and bounce it toward the basket.",
       completeText: "Amazing rescue route! You cleared every vine stage.",
       stageLabel: "Stage {n}",
     },
@@ -37,7 +37,7 @@
       score: "分數",
       stages: "選關",
       cut: "切斷",
-      hint: "拖曳葉子。準備好時，點藤蔓或水果上方來切斷。",
+      hint: "先把葉子拖到水果下方，再按切斷。水果掉下來時也可以繼續拖葉子。",
       loading: "載入中",
       nextStage: "下一關",
       retry: "再玩一次",
@@ -46,7 +46,7 @@
       successTitle: "水果送到了！",
       failTitle: "再試一次彈跳路線！",
       successText: "時機抓得很好，動物吃到水果了。",
-      failText: "把葉子移到水果下方，讓水果彈向籃子。",
+      failText: "水果下落時繼續移動葉子，把它彈向籃子。",
       completeText: "太棒了！你完成了所有藤蔓救援關卡。",
       stageLabel: "第 {n} 關",
     },
@@ -92,6 +92,7 @@
     targetZone: $("targetZone"),
     targetAnimal: $("targetAnimal"),
     vineButton: $("vineButton"),
+    cutNowBtn: $("cutNowBtn"),
     fruit: $("fruit"),
     leafPaddle: $("leafPaddle"),
     floatText: $("floatText"),
@@ -183,6 +184,8 @@
     nodes.targetAnimal.src = assets[stage.animal];
     nodes.fruit.src = assets[stage.fruit];
     nodes.vineButton.classList.remove("cut");
+    nodes.cutNowBtn.disabled = false;
+    nodes.cutNowBtn.classList.remove("cut");
     nodes.vineButton.style.left = `${stage.startX}%`;
     nodes.hintText.textContent = t("hint");
     positionElements();
@@ -204,6 +207,8 @@
     running = true;
     fruit.cut = true;
     nodes.vineButton.classList.add("cut");
+    nodes.cutNowBtn.disabled = true;
+    nodes.cutNowBtn.classList.add("cut");
     nodes.hintText.textContent = "";
     lastFrame = performance.now();
     window.WonderSound?.play?.("click");
@@ -356,6 +361,10 @@
   nodes.vineButton.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+    cutVine();
+  });
+  nodes.cutNowBtn.addEventListener("click", (event) => {
+    event.preventDefault();
     cutVine();
   });
   nodes.playfield.addEventListener("pointerdown", (event) => {
