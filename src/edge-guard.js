@@ -25,6 +25,34 @@
     });
   }
 
+  function focusPlayableArea(element) {
+    if (!element || element.classList.contains("hidden")) return;
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const top = element.getBoundingClientRect().top + window.scrollY - 10;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      });
+    });
+  }
+
+  function installPlayableFocus() {
+    const selectors = [
+      "#playPanel",
+      "#gameBoardPanel",
+      "#gameHud",
+      ".battle-panel",
+      ".game-panel",
+      ".play-panel",
+      ".game-board-panel",
+    ];
+    const nodes = Array.from(document.querySelectorAll(selectors.join(",")));
+    nodes.forEach((node) => {
+      const observer = new MutationObserver(() => focusPlayableArea(node));
+      observer.observe(node, { attributes: true, attributeFilter: ["class", "style", "hidden"] });
+      if (!node.classList.contains("hidden") && node.offsetParent !== null) focusPlayableArea(node);
+    });
+  }
+
   function start(event) {
     if (event.touches.length !== 1 || isEditable(event.target)) {
       gesture = null;
@@ -67,6 +95,9 @@
   markNonDraggableMedia();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", markNonDraggableMedia, { once: true });
+    document.addEventListener("DOMContentLoaded", installPlayableFocus, { once: true });
+  } else {
+    installPlayableFocus();
   }
   window.addEventListener("touchstart", start, { passive: true, capture: true });
   window.addEventListener("touchmove", move, { passive: false, capture: true });
