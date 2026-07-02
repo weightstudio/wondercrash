@@ -49,7 +49,7 @@
       next: "Next",
       drop: "Drop",
       restart: "Restart",
-      menuTitle: "Merge to Giraffe",
+      menuTitle: "Merge to the Lion King",
       menuDesc: "Drop animal balls carefully. Matching animals merge into the next bigger animal. Keep the tower below the red line.",
       start: "Start",
       gameOver: "Game Over",
@@ -71,15 +71,15 @@
       newBest: "New Best!",
       fruit0: "Mouse Ball",
       fruit1: "Rabbit Ball",
-      fruit2: "Cat Ball",
-      fruit3: "Dog Ball",
-      fruit4: "Fox Ball",
-      fruit5: "Panda Ball",
-      fruit6: "Lion Ball",
-      fruit7: "Tiger Ball",
-      fruit8: "Koala Ball",
-      fruit9: "Bear Ball",
-      fruit10: "Giraffe Ball",
+      fruit2: "Fox Ball",
+      fruit3: "Penguin Ball",
+      fruit4: "Koala Ball",
+      fruit5: "Owl Ball",
+      fruit6: "Panda Ball",
+      fruit7: "Lion Cub Ball",
+      fruit8: "Giraffe Ball",
+      fruit9: "Elephant Ball",
+      fruit10: "Lion King Ball",
     },
     "zh-Hant": {
       title: "動物水果合成",
@@ -89,7 +89,7 @@
       next: "下一顆",
       drop: "落下",
       restart: "重新開始",
-      menuTitle: "一路合成到長頸鹿",
+      menuTitle: "一路合成到獅王",
       menuDesc: "小心落下動物球。相同動物會合成下一個更大的動物，別讓塔超過紅線。",
       start: "開始",
       gameOver: "遊戲結束",
@@ -109,17 +109,17 @@
       playAgain: "再玩一次",
       lobby: "大廳",
       newBest: "新紀錄！",
-      fruit0: "兔兔球",
-      fruit1: "狐狸球",
-      fruit2: "貓咪球",
-      fruit3: "小狗球",
-      fruit4: "熊貓球",
-      fruit5: "企鵝球",
-      fruit6: "無尾熊球",
-      fruit7: "貓頭鷹球",
-      fruit8: "獅子球",
-      fruit9: "長頸鹿球",
-      fruit10: "大獅王球",
+      fruit0: "老鼠球",
+      fruit1: "兔兔球",
+      fruit2: "狐狸球",
+      fruit3: "企鵝球",
+      fruit4: "無尾熊球",
+      fruit5: "貓頭鷹球",
+      fruit6: "熊貓球",
+      fruit7: "小獅子球",
+      fruit8: "長頸鹿球",
+      fruit9: "大象球",
+      fruit10: "獅王球",
     },  };
 
   function loadImage(src) {
@@ -143,17 +143,17 @@
   ];
 
   const tokenSources = [
-    "../../assets/tiny-weather-animal-rabbit.png",
-    "../../assets/tiny-weather-animal-fox.png",
-    "../../assets/animal-guard-cat.png",
-    "../../assets/animal-guard-dog.png",
-    "../../assets/tiny-weather-animal-panda.png",
-    "../../assets/tiny-weather-animal-penguin.png",
-    "../../assets/tiny-weather-animal-koala.png",
-    "../../assets/animal-guard-owl.png",
-    "../../assets/tiny-weather-animal-lion.png",
-    "../../assets/animal-zoo-idle-giraffe.png",
-    "../../assets/weightplay-lion-mascot.webp",
+    "../../assets/animal-merge-token-0.png",
+    "../../assets/animal-merge-token-1.png",
+    "../../assets/animal-merge-token-2.png",
+    "../../assets/animal-merge-token-3.png",
+    "../../assets/animal-merge-token-4.png",
+    "../../assets/animal-merge-token-5.png",
+    "../../assets/animal-merge-token-6.png",
+    "../../assets/animal-merge-token-7.png",
+    "../../assets/animal-merge-token-8.png",
+    "../../assets/animal-merge-token-9.png",
+    "../../assets/animal-merge-token-10.png",
   ];
   const tokenImages = tokenSources.map((src) => loadImage(src));
 
@@ -599,30 +599,23 @@
     ctx.scale(popScale, popScale);
     ctx.rotate(fruit.angle || 0);
 
-    const gradient = ctx.createRadialGradient(-fruit.radius * 0.34, -fruit.radius * 0.42, fruit.radius * 0.12, 0, 0, fruit.radius);
-    gradient.addColorStop(0, spec.accent);
-    gradient.addColorStop(0.48, spec.color);
-    gradient.addColorStop(1, "rgba(23, 32, 51, 0.42)");
-    ctx.beginPath();
-    ctx.arc(0, 0, fruit.radius, 0, Math.PI * 2);
-    ctx.fillStyle = gradient;
-    ctx.fill();
-
     if (image?.complete && image.naturalWidth) {
-      ctx.save();
+      const size = fruit.radius * 2.12;
+      ctx.drawImage(image, -size / 2, -size / 2, size, size);
+    } else {
+      const gradient = ctx.createRadialGradient(-fruit.radius * 0.34, -fruit.radius * 0.42, fruit.radius * 0.12, 0, 0, fruit.radius);
+      gradient.addColorStop(0, spec.accent);
+      gradient.addColorStop(0.48, spec.color);
+      gradient.addColorStop(1, "rgba(23, 32, 51, 0.42)");
       ctx.beginPath();
-      ctx.arc(0, 0, fruit.radius * 0.9, 0, Math.PI * 2);
-      ctx.clip();
-      const scale = Math.min((fruit.radius * 1.55) / image.naturalWidth, (fruit.radius * 1.55) / image.naturalHeight);
-      const drawW = image.naturalWidth * scale;
-      const drawH = image.naturalHeight * scale;
-      ctx.drawImage(image, -drawW / 2, -drawH * 0.56, drawW, drawH);
-      ctx.restore();
+      ctx.arc(0, 0, fruit.radius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
     }
 
-    ctx.globalAlpha *= 0.34;
+    ctx.globalAlpha *= 0.18;
     ctx.beginPath();
-    ctx.ellipse(-fruit.radius * 0.28, -fruit.radius * 0.34, fruit.radius * 0.23, fruit.radius * 0.14, -0.45, 0, Math.PI * 2);
+    ctx.ellipse(-fruit.radius * 0.32, -fruit.radius * 0.36, fruit.radius * 0.2, fruit.radius * 0.11, -0.45, 0, Math.PI * 2);
     ctx.fillStyle = "#fff";
     ctx.fill();
 
