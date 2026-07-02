@@ -75,8 +75,8 @@
       time: "3-8 minutes",
       skills: ["Logic", "Focus", "Animal Knowledge"],
       intro:
-        "Animal Zoo Idle is a gentle safari park game where visitors walk in, buy tickets, and leave coins in the ticket box while the animals play on a sunny meadow. Players feed the lion and giraffe, keep animal happiness high, collect ticket income, and upgrade the meadow to welcome more visitors. It is designed as a return-friendly idle game with visible animal care instead of an instant button-click reward loop.",
-      how: ["Open the safari park from the menu.", "Wait for visitors to buy tickets and fill the ticket box.", "Feed animals to raise happiness and attract more visitors.", "Use coins to upgrade the meadow and invite the giraffe."],
+        "Animal Zoo Idle is a gentle zoo growth game where visitors walk in, buy tickets, and leave coins in the ticket box while animals play around the park. Players care for animals, collect ticket income, upgrade the zoo gate, and recruit more animals such as giraffes, elephants, pandas, and penguins. As the gate improves and more animals join, the park becomes livelier and earns more coins. It is designed as a return-friendly idle game with visible growth instead of an instant button-click reward loop.",
+      how: ["Open the animal park from the menu.", "Wait for visitors to buy tickets and fill the ticket box.", "Care for animals to raise happiness and keep income stable.", "Use coins to upgrade the gate and recruit more animals."],
       parent:
         "This game may help children practice focus, simple planning, responsibility, and animal knowledge through a gentle zoo-care loop. Progress is stored locally in the browser and is for fun only, not a formal assessment.",
       faq: [
@@ -467,8 +467,8 @@
         title: "動物小小樂園",
         difficulty: "簡單",
         time: "3-8 分鐘",
-        intro: "動物小小樂園是 WeightPlay 的溫和放置型草原動物園遊戲。遊客會走進樂園買票參觀，票錢會慢慢累積在票箱裡；玩家可以餵獅子與長頸鹿，提高動物幸福感，吸引更多遊客，再用金幣升級草原。這款遊戲不再只是按按鈕領錢，而是讓孩子看到動物、遊客和票箱一起形成簡單的經營循環。",
-        how: ["從選單開放草原樂園。", "等待遊客進園買票，讓票箱累積金幣。", "餵食獅子或長頸鹿，提高幸福感並吸引更多遊客。", "用金幣升級草原，並邀請長頸鹿加入。"],
+        intro: "動物小小樂園是 WeightPlay 的溫和動物園養成遊戲。遊客會走進樂園買票參觀，票錢會累積在票箱裡；玩家可以照顧動物、升級園區大門，並用金幣招募長頸鹿、大象、熊貓與企鵝。大門外觀會隨著等級變得更漂亮，動物越多、幸福度越高，樂園收入也會越好。這款遊戲讓孩子看到動物、遊客、建築升級和票箱收益形成簡單的經營循環。",
+        how: ["從選單開放動物樂園。", "等待遊客進園買票，讓票箱累積金幣。", "按下照顧提高動物幸福度，讓收入更穩定。", "用金幣升級大門外觀，並招募更多動物加入樂園。"],
         parent: "這款遊戲可以讓孩子透過溫和的動物園經營循環練習專注、簡單規劃、責任感與動物知識。進度只儲存在瀏覽器本機，分數與報告只用於鼓勵與遊戲樂趣，不是正式能力評量。",
         faq: [["動物小小樂園需要登入嗎？", "不需要。基本遊玩使用瀏覽器本機進度。"], ["適合幾歲？", "建議 5+，也適合親子一起玩。"], ["離開遊戲會有進度嗎？", "會。遊戲會依照本機時間計算一段離線票箱收益。"], ["可以練習什麼？", "可以練習專注、邏輯、簡單規劃與動物知識。"]],
       },
