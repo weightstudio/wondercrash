@@ -92,6 +92,31 @@ window.WONDER_LOBBY = {
       },
     },
     {
+      id: "animal-rope-rescue",
+      title: { en: "Animal Vine Rescue", "zh-Hant": "動物藤蔓救援" },
+      status: "playable",
+      statusText: { en: "Playable", "zh-Hant": "可遊玩" },
+      href: "games/animal-rope-rescue/",
+      type: { en: "Physics Puzzle", "zh-Hant": "物理益智" },
+      categories: ["Animal Games", "Puzzle", "Family"],
+      skills: ["Hand-Eye Coordination", "Problem Solving", "Focus"],
+      ages: ["5", "family"],
+      ageLabel: { en: "5+", "zh-Hant": "5+" },
+      description: {
+        en: "Cut vines, drag the leaf trampoline, and bounce fruit into animal baskets through short physics stages.",
+        "zh-Hant": "切斷藤蔓、拖曳葉子彈板，把水果彈進動物籃子裡。",
+      },
+      meta: {
+        en: ["Animal Physics", "8 Stages", "Vine Timing"],
+        "zh-Hant": ["動物物理", "8 關", "藤蔓時機"],
+      },
+      art: {
+        kind: "image",
+        background: "assets/animal-vine-rescue-cover.png",
+        hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
+      },
+    },
+    {
       id: "animal-zoo-idle",
       title: { en: "Animal Zoo Idle", "zh-Hant": "動物小小樂園" },
       status: "playable",

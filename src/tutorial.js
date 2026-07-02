@@ -111,6 +111,14 @@
         { icon: "3", en: ["Plan", "Use your moves carefully before they run out."], "zh-Hant": ["規劃", "步數有限，先想好再消除。"] },
       ],
     },
+    "animal-rope-rescue": {
+      title: { en: "Bounce fruit to animals.", "zh-Hant": "把水果彈給小動物。" },
+      steps: [
+        { icon: "1", en: ["Move Leaf", "Drag the leaf trampoline under the falling fruit."], "zh-Hant": ["移動葉子", "拖曳葉子彈板，接住掉下來的水果。"] },
+        { icon: "2", en: ["Cut Vine", "Tap Cut when you are ready to release the fruit."], "zh-Hant": ["切藤蔓", "準備好時點擊切斷，讓水果開始掉落。"] },
+        { icon: "3", en: ["Feed", "Bounce fruit into the animal basket to clear the stage."], "zh-Hant": ["餵動物", "把水果彈進動物籃子就能過關。"] },
+      ],
+    },
     "animal-zoo-idle": {
       title: { en: "Open your safari park.", "zh-Hant": "開放你的草原樂園。" },
       steps: [

@@ -51,6 +51,23 @@
         ["Can families play together?", "Yes. It is designed to be easy to discuss and replay."],
       ],
     },
+    "animal-rope-rescue": {
+      title: "Animal Vine Rescue",
+      age: "5+",
+      difficulty: "Easy",
+      time: "3-5 minutes",
+      skills: ["Hand-Eye Coordination", "Problem Solving", "Focus"],
+      intro:
+        "Animal Vine Rescue is a short animal physics puzzle where players cut vines, move a leaf trampoline, and bounce fruit into the animal basket. The game is designed to be understandable quickly while still giving players real control through timing and position. Each stage changes the fruit start, target animal, wind, and gravity so it feels more like a playable rescue challenge than a one-click animation.",
+      how: ["Drag the leaf trampoline left and right.", "Tap Cut to release the fruit from the vine.", "Bounce the fruit toward the animal basket.", "Clear stages to unlock harder rescue routes."],
+      parent:
+        "This game may help children practice timing, focus, hand-eye coordination, and simple problem solving. Scores and stars are for fun progress tracking only, not a formal test or diagnosis.",
+      faq: [
+        ["Is Animal Vine Rescue free?", "Yes. It runs in the browser on WeightPlay."],
+        ["What does this game practice?", "It can practice timing, focus, hand-eye coordination, and problem solving through playful physics."],
+        ["Does it copy another game?", "No. It uses an original animal rescue theme, custom stage goals, and WeightPlay art direction."],
+      ],
+    },
     "animal-zoo-idle": {
       title: "Animal Zoo Idle",
       age: "5+",
@@ -352,6 +369,7 @@
     "color-lunchbox": { gameplay: "Color Sorting", genre: ["Preschool", "Education", "Animal"] },
     "bubble-bakery": { gameplay: "Bubble Match Puzzle", genre: ["Puzzle", "Logic", "Animal"] },
     "animal-zoo-idle": { gameplay: "Idle Zoo Care", genre: ["Idle", "Simulation", "Animal"] },
+    "animal-rope-rescue": { gameplay: "Vine Physics Puzzle", genre: ["Physics", "Puzzle", "Animal"] },
     "star-memory": { gameplay: "Memory Match", genre: ["Memory", "Puzzle", "Animal"] },
     "campus-dash": { gameplay: "Lane Runner", genre: ["Runner", "Reaction", "Animal"] },
     "snack-blocks": { gameplay: "Match 3 Puzzle", genre: ["Puzzle", "Logic", "Animal"] },
@@ -371,6 +389,7 @@
     "color-lunchbox": "lunchbox-cover.png",
     "bubble-bakery": "bubble-bakery-cover.png",
     "animal-zoo-idle": "animal-zoo-idle-cover.png",
+    "animal-rope-rescue": "animal-vine-rescue-cover.png",
     "star-memory": "memory-cover.png",
     "campus-dash": "campus-dash-cover.png",
     "snack-blocks": "snack-blocks-cover.png",
@@ -390,7 +409,25 @@
       "wonder-crash": { gameplay: "自動武器防衛", genre: ["動作", "防衛", "動物"] },
       "color-lunchbox": { gameplay: "顏色分類", genre: ["幼兒", "教育", "動物"] },
       "bubble-bakery": { gameplay: "泡泡配對益智", genre: ["益智", "邏輯", "動物"] },
+      "animal-rope-rescue": {
+        title: "動物藤蔓救援",
+        age: "5+",
+        difficulty: "簡單",
+        time: "3-5 分鐘",
+        skills: ["手眼協調", "解決問題", "專注"],
+        intro:
+          "動物藤蔓救援是一款短關卡物理益智遊戲。玩家要切斷藤蔓、拖曳葉子彈板，將水果彈進動物籃子裡。每一關都會改變水果位置、目標動物、風向與下落速度，讓孩子能用時機與位置控制完成救援，而不是只看動畫。",
+        how: ["拖曳葉子彈板左右移動。", "點擊切斷，讓水果從藤蔓掉下來。", "把水果彈向動物的籃子。", "完成關卡後解鎖更難的救援路線。"],
+        parent:
+          "這款遊戲可讓孩子在輕鬆遊玩中練習時機、專注、手眼協調與簡單解題。星星與分數只用於趣味進步紀錄，不是正式測驗或診斷。",
+        faq: [
+          ["這款遊戲免費嗎？", "是的，可以直接在 WeightPlay 網頁遊玩。"],
+          ["這款遊戲練習什麼？", "主要練習時機判斷、專注、手眼協調與解決問題。"],
+          ["這是模仿其他遊戲嗎？", "不是。這是 WeightPlay 原創動物救援主題與關卡設計。"],
+        ],
+      },
       "animal-zoo-idle": { gameplay: "動物園放置照顧", genre: ["放置", "經營", "動物"] },
+      "animal-rope-rescue": { gameplay: "藤蔓物理益智", genre: ["物理", "益智", "動物"] },
       "star-memory": { gameplay: "記憶配對", genre: ["記憶", "益智", "動物"] },
       "campus-dash": { gameplay: "路線跑酷", genre: ["跑酷", "反應", "動物"] },
       "snack-blocks": { gameplay: "三消益智", genre: ["益智", "邏輯", "動物"] },
