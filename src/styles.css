@@ -64,6 +64,26 @@ body.lobby-page {
   letter-spacing: 0;
 }
 
+.brand-lockup {
+  display: grid;
+  grid-template-columns: clamp(78px, 10vw, 116px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  width: min(100%, 690px);
+}
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.32)) drop-shadow(0 0 16px rgba(62, 204, 255, 0.24));
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
 .lobby-hero h1 {
   max-width: 620px;
   margin: 0;
@@ -1203,6 +1223,11 @@ body.lobby-page {
 
   .lobby-hero-copy {
     grid-column: 1 / -1;
+  }
+
+  .brand-lockup {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 12px;
   }
 
   .lobby-mascot {
