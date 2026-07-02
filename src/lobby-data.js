@@ -1,4 +1,4 @@
-﻿window.WONDER_LOBBY = {
+window.WONDER_LOBBY = {
   platform: {
     name: "WeightPlay",
     company: "WeightStudio",
@@ -390,32 +390,6 @@
         kind: "image",
         background: "assets/shape-train-cover.webp",
         hero: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>",
-      },
-    },
-    {
-      id: "animal-ranger-tactics",
-      title: { en: "Animal Ranger Tactics", "zh-Hant": "動物巡守戰略" },
-      status: "playable",
-      statusText: { en: "Playable", "zh-Hant": "可遊玩" },
-      href: "games/animal-ranger-tactics/",
-      type: { en: "Strategy Simulation", "zh-Hant": "策略模擬" },
-      categories: ["Animal Games", "Strategy", "Education"],
-      skills: ["Logic", "Problem Solving", "Focus", "Animal Knowledge"],
-      ages: ["12"],
-      ageLabel: { en: "13+", "zh-Hant": "13+" },
-      description: {
-        en: "Plan ranger actions, protect habitats, and balance wildlife ecosystems across deeper 13+ strategy missions.",
-        "zh-Hant": "規劃巡守行動、保護棲地，在 13+ 深度策略任務中平衡野生動物生態。",
-      },
-      meta: {
-        en: ["13+ Strategy", "6 Missions", "Ecosystem Balance"],
-        "zh-Hant": ["13+ 策略", "6 個任務", "生態平衡"],
-      },
-      art: {
-        kind: "image",
-        background: "assets/animal-ranger-cover.svg",
-        hero: "assets/animal-ranger-lion.svg",
-        hideHero: true,
       },
     },
     {

@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const games = {
     "wonder-crash": {
       title: "Wonder Crash",
@@ -259,29 +259,6 @@
         ["What skills does it practice?", "It practices matching, color recognition, and coordination."],
       ],
     },
-    "animal-ranger-tactics": {
-      title: "Animal Ranger Tactics",
-      age: "13+",
-      difficulty: "Hard",
-      time: "8-12 minutes",
-      skills: ["Logic", "Problem Solving", "Focus", "Animal Knowledge"],
-      intro:
-        "Animal Ranger Tactics is a deeper 13+ animal strategy game where players manage a wildlife reserve across turn-based missions. Each turn gives only a few ranger actions, so players must decide whether to patrol rising threats, restore damaged habitats, or research animal recovery. The goal is not just to win one puzzle, but to keep wildlife, habitat quality, and threat control balanced across the whole reserve. It is built for older players who enjoy planning, tradeoffs, and replaying missions to improve their ecosystem score.",
-      how: ["Choose a reserve mission.", "Select a habitat cell on the grid.", "Use Patrol, Restore, or Research with limited actions each turn.", "End turns carefully and finish with enough ecosystem balance to clear the mission."],
-      strategyTips: [
-        "Do not spend every action on the highest threat cell. A weak habitat can lower the whole reserve score even when danger is controlled.",
-        "Use Research before the final turns when animal recovery is falling behind habitat quality.",
-        "Replay missions to improve the ecosystem score instead of only clearing the minimum goal.",
-      ],
-      parent:
-        "This game is designed for older children and families who enjoy strategy. It may help players practice planning, focus, logic, and animal knowledge through a fictional wildlife-management scenario. Scores are for fun and local progress tracking only, not a formal education or ability assessment.",
-      faq: [
-        ["Why is Animal Ranger Tactics 13+?", "It uses turn planning, tradeoffs, and multi-stat strategy that may be too complex for younger children."],
-        ["Is this a violent game?", "No. The game is about patrols, habitat restoration, research, and ecosystem balance."],
-        ["What skills does it practice?", "It can practice logic, planning, focus, problem solving, and animal knowledge."],
-        ["Does it require login?", "No. Mission unlocks and stars are saved locally in the browser."],
-      ],
-    },
     "tiny-weather-rescue": {
       title: "Animal Helper Quest",
       age: "5+",
@@ -386,7 +363,6 @@
     "animal-quiz": { gameplay: "Animal Quiz", genre: ["Quiz", "Education", "Animal"] },
     "zoo-helper-day": { gameplay: "Animal Care", genre: ["Preschool", "Education", "Animal"] },
     "shape-train": { gameplay: "Shape Sorting", genre: ["Preschool", "Education", "Animal"] },
-    "animal-ranger-tactics": { gameplay: "Turn-Based Strategy", genre: ["Strategy", "Simulation", "Animal"] },
     "tiny-weather-rescue": { gameplay: "Helper Choice", genre: ["Puzzle", "Care", "Animal"] },
   };
 
@@ -406,7 +382,6 @@
     "animal-quiz": "quiz-cover.png",
     "zoo-helper-day": "zoo-helper-day-cover.png",
     "shape-train": "shape-train-cover.png",
-    "animal-ranger-tactics": "animal-ranger-cover.svg",
     "tiny-weather-rescue": "tiny-weather-rescue-cover.png",
   };
 
@@ -427,7 +402,6 @@
       "animal-quiz": { gameplay: "動物問答", genre: ["問答", "教育", "動物"] },
       "zoo-helper-day": { gameplay: "動物照顧", genre: ["幼兒", "教育", "動物"] },
       "shape-train": { gameplay: "形狀分類", genre: ["幼兒", "教育", "動物"] },
-      "animal-ranger-tactics": { gameplay: "回合制策略", genre: ["策略", "模擬", "動物"] },
       "tiny-weather-rescue": { gameplay: "幫忙選擇", genre: ["益智", "照顧", "動物"] },
     },
   };
@@ -568,17 +542,6 @@
         how: ["觀察目前的形狀貨物。", "找到形狀或顏色相符的車廂。", "點選或拖曳到正確位置。", "完成全部貨物後讓小火車出發。"],
         parent: "這款遊戲可以讓孩子練習形狀辨識、顏色辨識、簡單邏輯與手眼協調。遊戲回饋以鼓勵為主，不做能力診斷。",
         faq: [["需要看字嗎？", "不需要。主要玩法靠形狀和顏色。"], ["適合幾歲？", "建議 3+。"], ["可以練習什麼？", "可以練習形狀、顏色、分類和協調。"]],
-      },
-      "animal-ranger-tactics": {
-        title: "動物巡守戰略",
-        age: "13+",
-        difficulty: "困難",
-        time: "8-12 分鐘",
-        intro: "動物巡守戰略是 WeightPlay 中較有深度的 13+ 動物策略遊戲。玩家需要在回合制任務中管理野生動物保護區，每回合只有少量巡守行動，因此必須判斷要先巡守降低威脅、修復受損棲地，還是研究動物恢復。遊戲重點不是單純點擊，而是在野生動物數量、棲地品質與威脅控制之間取得平衡。適合喜歡規劃、取捨與重玩挑戰高分的較大孩子與家庭玩家。",
-        how: ["選擇一個保護區任務。", "點選地圖上的棲地格。", "在有限行動中使用巡守、修復或研究。", "謹慎結束回合，讓生態平衡達標即可完成任務。"],
-        strategyTips: ["不要把所有行動都用在最高威脅格。棲地太弱時，即使危險降低，整體保護區分數也會下降。", "如果動物恢復落後棲地品質，最後幾回合前可以優先研究。", "任務通關後可以重玩挑戰更高生態分，而不是只達到最低過關條件。"],
-        parent: "這款遊戲適合喜歡策略的較大孩子與家庭玩家。它可以透過虛構的野生動物管理情境，練習規劃、專注、邏輯與動物知識。分數只用於遊戲樂趣與本機進步紀錄，不是正式教育或能力評量。",
-        faq: [["為什麼是 13+？", "因為遊戲包含回合規劃、多項數值取捨與策略判斷，對較小孩子可能太複雜。"], ["這是暴力遊戲嗎？", "不是。玩法是巡守、棲地修復、研究與生態平衡。"], ["會練習什麼？", "可以練習邏輯、規劃、專注、問題解決與動物知識。"], ["需要登入嗎？", "不需要。任務解鎖與星等會儲存在瀏覽器本機。"]],
       },
       "tiny-weather-rescue": {
         title: "動物幫幫隊",
