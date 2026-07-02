@@ -153,7 +153,7 @@
     "../../assets/animal-guard-owl.png",
     "../../assets/tiny-weather-animal-lion.png",
     "../../assets/animal-zoo-idle-giraffe.png",
-    "../../assets/weightplay-lion-mascot.png",
+    "../../assets/weightplay-lion-mascot.webp",
   ];
   const tokenImages = tokenSources.map((src) => loadImage(src));
 
