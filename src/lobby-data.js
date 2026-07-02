@@ -218,7 +218,7 @@ window.WONDER_LOBBY = {
     },
     {
       id: "fruit-merge",
-      title: { en: "Animal Fruit Merge", "zh-Hant": "動物水果合成" },
+      title: { en: "Animal Merge Tower", "zh-Hant": "動物合成塔" },
       status: "playable",
       statusText: { en: "Playable", "zh-Hant": "可遊玩" },
       href: "games/fruit-merge/",
@@ -228,12 +228,12 @@ window.WONDER_LOBBY = {
       ages: ["5", "family"],
       ageLabel: { en: "5+", "zh-Hant": "5+" },
       description: {
-        en: "Feed the animal festival by dropping fruits, merging matching pairs, and chasing your best score.",
-        "zh-Hant": "投下水果、合成更大的水果，替動物祭典累積高分。",
+        en: "Drop animal balls, merge matching pairs, and chase your best score all the way to the Lion King.",
+        "zh-Hant": "投下動物球、合成更大的動物，一路挑戰合成到獅王球。",
       },
       meta: {
-        en: ["Animal Festival", "Fruit Merge", "Best Record"],
-        "zh-Hant": ["動物祭典", "水果合成", "最佳紀錄"],
+        en: ["Animal Merge", "Physics Puzzle", "Best Record"],
+        "zh-Hant": ["動物合成", "物理益智", "最佳紀錄"],
       },
       art: {
         kind: "image",

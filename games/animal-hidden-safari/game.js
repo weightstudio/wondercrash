@@ -129,6 +129,25 @@
     acacia: "\u{1F333}",
   };
 
+  const defaultCovers = {
+    bird: "leaf-top",
+    butterfly: "leaf-top",
+    monkey: "leaf-left",
+    giraffe: "leaf-right",
+    elephant: "dust",
+    lion: "grass",
+    zebra: "grass",
+    rhino: "grass",
+    hippo: "water",
+    frog: "water",
+    shell: "water",
+    paw: "dust",
+    banana: "grass",
+    feather: "grass",
+    leaf: "leaf-top",
+    acacia: "leaf-right",
+  };
+
   const stages = [
     { habitat: "sunny", targets: [["lion", 50, 63, 62, "grass"], ["elephant", 18, 72, 54, "leaf-left"], ["giraffe", 82, 57, 58, "leaf-right"], ["zebra", 69, 79, 50, "grass"], ["monkey", 28, 47, 42, "leaf-top"], ["bird", 40, 26, 36], ["paw", 58, 84, 32, "dust"], ["banana", 32, 76, 32, "grass"]] },
     { habitat: "river", theme: "river", targets: [["hippo", 24, 72, 60, "water"], ["elephant", 75, 67, 56, "leaf-right"], ["frog", 42, 82, 34, "water"], ["bird", 63, 34, 38], ["shell", 18, 84, 32, "water"], ["leaf", 86, 78, 32, "grass"], ["zebra", 52, 56, 46, "leaf-top"], ["paw", 36, 62, 30, "dust"]] },
@@ -287,10 +306,11 @@
   function renderScene() {
     nodes.targetsLayer.innerHTML = "";
     stages[currentStage].targets.forEach(([id, x, y, size, cover], index) => {
+      const coverType = cover || defaultCovers[id] || "grass";
       const button = document.createElement("button");
       button.type = "button";
       button.className = "target";
-      if (cover) button.classList.add(`cover-${cover}`);
+      button.classList.add(`cover-${coverType}`);
       button.dataset.index = String(index);
       button.dataset.id = id;
       button.style.left = `${x}%`;
