@@ -192,6 +192,13 @@ select {
   color: #5ba5ff;
 }
 
+.wallet-row img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
 .stage-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
