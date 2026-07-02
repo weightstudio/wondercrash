@@ -6,14 +6,14 @@
   const progressKey = "weightplay_weather_progress";
 
   const tools = {
-    umbrella: { icon: "\u{2602}\u{FE0F}", className: "umbrella" },
-    towel: { icon: "\u25B0", className: "towel" },
-    fan: { icon: "\u{1FAAD}", className: "fan" },
-    lantern: { icon: "\u{1F3EE}", className: "lantern" },
-    house: { icon: "\u{1F3E0}", className: "house" },
-    apple: { icon: "\u{1F34E}", className: "apple" },
-    boots: { icon: "\u{1F97E}", className: "boots" },
-    blanket: { icon: "\u{1F9E3}", className: "blanket" },
+    umbrella: { icon: "../../assets/tiny-weather-tool-umbrella.svg", className: "umbrella" },
+    towel: { icon: "../../assets/tiny-weather-tool-towel.svg", className: "towel" },
+    fan: { icon: "../../assets/tiny-weather-tool-fan.svg", className: "fan" },
+    lantern: { icon: "../../assets/tiny-weather-tool-lantern.svg", className: "lantern" },
+    house: { icon: "../../assets/tiny-weather-tool-house.svg", className: "house" },
+    apple: { icon: "../../assets/tiny-weather-tool-apple.svg", className: "apple" },
+    boots: { icon: "../../assets/tiny-weather-tool-boots.svg", className: "boots" },
+    blanket: { icon: "../../assets/tiny-weather-tool-blanket.svg", className: "blanket" },
   };
 
   const problems = {
@@ -322,7 +322,7 @@
             const tool = tools[key];
             return `
             <button class="tool-btn ${tool.className}" type="button" data-tool="${key}" aria-label="${t(key)}">
-              <i>${tool.icon}</i>
+              <i><img src="${tool.icon}" alt="" /></i>
               <span>${t(key)}</span>
             </button>
           `;
@@ -412,7 +412,7 @@
   function makeGhost(button, x, y) {
     const ghost = document.createElement("div");
     ghost.className = "tool-drag-ghost";
-    ghost.textContent = button.querySelector("i")?.textContent || "";
+    ghost.innerHTML = button.querySelector("i")?.innerHTML || "";
     document.body.append(ghost);
     moveGhost(x, y, ghost);
     return ghost;
