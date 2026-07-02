@@ -161,6 +161,12 @@
     boss: "../../assets/animal-guard-zombie-boss.png",
   };
 
+  const projectileAssets = {
+    cat: "../../assets/animal-guard-projectile-seed.svg",
+    owl: "../../assets/animal-guard-projectile-feather.svg",
+    fox: "../../assets/animal-guard-projectile-leaf.svg",
+  };
+
   const stages = [
     { titleKey: "basic", theme: "sunny", energy: 155, hp: 4, rows: 5, cols: 9, total: 9, interval: 2850, zombies: [{ type: "normal", hp: 82, speed: 8.2, damage: 12 }] },
     { titleKey: "fast", theme: "sunset", energy: 170, hp: 4, rows: 5, cols: 9, total: 12, interval: 2600, zombies: [{ type: "normal", hp: 95, speed: 9.2, damage: 13 }, { type: "fast", hp: 70, speed: 14.4, damage: 10 }] },
@@ -837,6 +843,7 @@
       el: document.createElement("div"),
     };
     projectile.el.className = `projectile ${guard.id} ${direction < 0 ? "left" : "right"}`;
+    projectile.el.innerHTML = `<img src="${projectileAssets[guard.id] || projectileAssets.cat}" alt="" draggable="false" />`;
     nodes.yardBoard.appendChild(projectile.el);
     projectiles.push(projectile);
     playSound("shoot");
@@ -859,8 +866,7 @@
         shot.dead = true;
       }
       if (shot.x > 1.08 || shot.x < -0.08) shot.dead = true;
-      const flip = shot.direction < 0 ? " scaleX(-1)" : "";
-      shot.el.style.transform = `translate(${shot.x * boardRect.width}px, ${shot.y * boardRect.height}px) translate(-50%, -50%)${flip}`;
+      shot.el.style.transform = `translate(${shot.x * boardRect.width}px, ${shot.y * boardRect.height}px) translate(-50%, -50%)`;
     });
     projectiles = projectiles.filter((shot) => {
       if (shot.dead) shot.el.remove();
