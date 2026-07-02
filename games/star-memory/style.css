@@ -351,11 +351,11 @@ body {
   transform: scale(0.95);
 }
 
-.card-back svg {
+.card-back img {
   width: 50%;
   height: 50%;
-  stroke: var(--primary);
   filter: drop-shadow(0 0 4px var(--primary-glow));
+  pointer-events: none;
 }
 
 .card-front {
@@ -365,9 +365,11 @@ body {
   padding: 8px;
 }
 
-.card-front svg {
+.card-front img {
   width: 80%;
   height: 80%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 .card.matched .card-front {

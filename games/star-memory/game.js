@@ -40,33 +40,21 @@
   const STARS_KEY_PREFIX = "starMemoryLevelStars_";
   const SCORE_KEY_PREFIX = "starMemoryLevelScore_";
 
-  // Vector SVGs library
-  const svgLibrary = {
-    sun: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="22" fill="#f59e0b" /><path d="M50 5v14M50 81v14M5 50h14M81 50h14M18 18l10 10M72 72l10 10M18 82l10-10M72 28l10-10" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" /></svg>`,
-    
-    moon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M40 20a30 30 0 1 0 40 40 34 34 0 1 1-40-40z" fill="#fef08a" stroke="#eab308" stroke-width="4" stroke-linejoin="round" /></svg>`,
-    
-    star: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,10 62,38 92,38 68,56 77,84 50,67 23,84 32,56 8,38 38,38" fill="#fbbf24" stroke="#d97706" stroke-width="4" stroke-linejoin="round" /></svg>`,
-    
-    rocket: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 15c8 15 10 30 10 45H40c0-15 2-30 10-45z" fill="#ef4444" /><path d="M40 60h20l4 15H36z" fill="#94a3b8" /><path d="M35 50l-10 15h10zM65 50l10 15h-10z" fill="#dc2626" /><circle cx="50" cy="40" r="6" fill="#38bdf8" stroke="#0284c7" stroke-width="2" /><path d="M45 75l5 15 5-15z" fill="#f97316" /></svg>`,
-    
-    ufo: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="50" rx="35" ry="12" fill="#64748b" /><circle cx="50" cy="38" r="16" fill="#38bdf8" opacity="0.8" /><ellipse cx="50" cy="50" rx="25" ry="8" fill="#10b981" /><circle cx="35" cy="50" r="3" fill="#fff" /><circle cx="50" cy="52" r="3" fill="#fff" /><circle cx="65" cy="50" r="3" fill="#fff" /></svg>`,
-    
-    planet: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="20" fill="#8b5cf6" /><path d="M15 55c15-10 45-15 70 0" fill="none" stroke="#a78bfa" stroke-width="6" transform="rotate(-15 50 50)" /></svg>`,
-    
-    donut: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="30" fill="#f59e0b" /><circle cx="50" cy="50" r="28" fill="#f472b6" /><circle cx="50" cy="50" r="10" fill="#0f172a" /><circle cx="35" cy="35" r="2" fill="#fff" /><circle cx="65" cy="40" r="2" fill="#fbbf24" /><circle cx="45" cy="65" r="2" fill="#10b981" /><circle cx="58" cy="62" r="2" fill="#38bdf8" /></svg>`,
-    
-    heart: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 84C25 60 15 45 15 32c0-10 8-18 18-18 8 0 14 5 17 11 3-6 9-11 17-11 10 0 18 8 18 18 0 13-10 28-35 52z" fill="#ec4899" stroke="#be185d" stroke-width="4" stroke-linejoin="round" /></svg>`,
-    
-    panda: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="32" fill="#fff" stroke="#1e293b" stroke-width="2" /><circle cx="28" cy="28" r="10" fill="#1e293b" /><circle cx="72" cy="28" r="10" fill="#1e293b" /><ellipse cx="36" cy="48" rx="8" ry="10" fill="#1e293b" /><ellipse cx="64" cy="48" rx="8" ry="10" fill="#1e293b" /><circle cx="38" cy="46" r="3" fill="#fff" /><circle cx="62" cy="46" r="3" fill="#fff" /><ellipse cx="50" cy="58" rx="6" ry="4" fill="#1e293b" /><path d="M46 64q4 3 8 0" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" /></svg>`,
-    
-    bear: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="78" cy="28" r="12" fill="#8b5a36" /><circle cx="22" cy="28" r="12" fill="#8b5a36" /><circle cx="50" cy="54" r="32" fill="#9b6840" /><circle cx="78" cy="28" r="6" fill="#d19a61" /><circle cx="22" cy="28" r="6" fill="#d19a61" /><ellipse cx="50" cy="62" rx="17" ry="12" fill="#d19a61" /><circle cx="38" cy="48" r="3" fill="#20140f" /><circle cx="62" cy="48" r="3" fill="#20140f" /><path d="M50 56l-5 5h10z" fill="#20140f" /><path d="M44 67q6 4 12 0" fill="none" stroke="#20140f" stroke-width="2" stroke-linecap="round" /></svg>`,
-    
-    lion: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="36" fill="#f97316" /><circle cx="50" cy="50" r="26" fill="#fbbf24" /><circle cx="38" cy="24" r="8" fill="#fbbf24" /><circle cx="62" cy="24" r="8" fill="#fbbf24" /><ellipse cx="40" cy="46" rx="4" ry="5" fill="#1e293b" /><ellipse cx="60" cy="46" rx="4" ry="5" fill="#1e293b" /><polygon points="50,52 46,56 54,56" fill="#1e293b" /><path d="M46 62q4 2 8 0" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" /></svg>`,
-    
-    cat: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="52" r="30" fill="#cbd5e1" /><polygon points="25,30 35,5 45,28" fill="#cbd5e1" /><polygon points="75,30 65,5 55,28" fill="#cbd5e1" /><ellipse cx="40" cy="48" rx="4" ry="5" fill="#1e293b" /><ellipse cx="60" cy="48" rx="4" ry="5" fill="#1e293b" /><polygon points="50,55 46,58 54,58" fill="#ef4444" /><path d="M46 63q4 2 8 0" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" /><path d="M20 54h15M20 58h15M80 54h-15M80 58h-15" stroke="#1e293b" stroke-width="2" /></svg>`,
-    
-    cardBack: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,15 58,38 83,38 63,53 71,76 50,61 29,76 37,53 17,38 42,38" fill="none" stroke="#3b82f6" stroke-width="6" stroke-linejoin="round" /><circle cx="50" cy="50" r="8" fill="#3b82f6" /></svg>`
+  // Card image asset library
+  const assetLibrary = {
+    sun: "../../assets/star-memory-sun.svg",
+    moon: "../../assets/star-memory-moon.svg",
+    star: "../../assets/star-memory-star.svg",
+    rocket: "../../assets/star-memory-rocket.svg",
+    ufo: "../../assets/star-memory-ufo.svg",
+    planet: "../../assets/star-memory-planet.svg",
+    donut: "../../assets/star-memory-donut.svg",
+    heart: "../../assets/star-memory-heart.svg",
+    panda: "../../assets/star-memory-panda.svg",
+    bear: "../../assets/star-memory-bear.svg",
+    lion: "../../assets/star-memory-lion.svg",
+    cat: "../../assets/star-memory-cat.svg",
+    cardBack: "../../assets/star-memory-card-back.svg"
   };
 
   // Local Translations Dictionary
@@ -501,8 +489,8 @@
         
         card.innerHTML = `
           <div class="card-inner">
-            <div class="card-back">${svgLibrary.cardBack}</div>
-            <div class="card-front">${svgLibrary[symbolId]}</div>
+            <div class="card-back"><img src="${assetLibrary.cardBack}" alt="" /></div>
+            <div class="card-front"><img src="${assetLibrary[symbolId]}" alt="" /></div>
           </div>
         `;
         
