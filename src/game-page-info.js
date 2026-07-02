@@ -232,14 +232,16 @@
       time: "3-5 minutes",
       skills: ["Animal Knowledge", "Memory", "Reading"],
       intro:
-        "Animal Quiz is a family-friendly quiz game with themed animal stages. Players answer short questions and learn animal facts through pictures and simple choices. It works best as a parent-child activity, especially for children who enjoy animals.",
-      how: ["Choose an animal stage.", "Read or listen with a parent if needed.", "Pick the best answer.", "Clear the questions to complete the stage."],
+        "Animal Quiz is a family-friendly animal knowledge game built around short themed stages. Players answer picture-supported questions about animal names, habitats, body features, and simple behavior clues. The game is designed for parents and children to play together: older children can read the questions themselves, while younger players can listen, look at the images, and discuss the answer before choosing. Each stage stays short so the focus remains on curiosity, memory, and friendly learning rather than test pressure.",
+      how: ["Choose an animal stage or region.", "Look at the picture and read the short question together.", "Discuss the animal clue, then pick the best answer.", "Complete the stage to unlock the next animal topic."],
+      strategyTips: ["Use the picture first, then read the question.", "If a child is unsure, talk about where the animal lives or what body feature stands out.", "Treat wrong answers as a chance to learn a new animal fact."],
       parent:
-        "This game may help children practice animal knowledge and memory. Younger children may benefit from parent help with reading.",
+        "This game may help children practice animal knowledge, memory, and early reading through short question-and-answer play. It is meant for family conversation and local progress tracking only, not a school test, IQ test, or formal learning assessment.",
       faq: [
-        ["Is Animal Quiz good for young children?", "Yes with parent support, especially for reading questions."],
-        ["What does it practice?", "It practices animal knowledge, memory, and simple reading."],
-        ["Are wrong answers punished?", "No. Feedback should stay encouraging."],
+        ["Is Animal Quiz good for young children?", "Yes with parent support, especially when a child needs help reading the question."],
+        ["What does it practice?", "It practices animal knowledge, memory, picture observation, and simple reading."],
+        ["Are wrong answers punished?", "No. Feedback should stay encouraging and help the child learn a new fact."],
+        ["Is this a formal learning test?", "No. It is a family-friendly animal quiz for fun practice and local progress only."],
       ],
     },
     "zoo-helper-day": {
@@ -559,10 +561,11 @@
         title: "動物小博士",
         difficulty: "簡單",
         time: "3-5 分鐘",
-        intro: "動物小博士是 WeightPlay 的親子動物問答遊戲。每一關以不同地區或主題動物為核心，透過圖片和簡短問題讓玩家認識動物特徵、棲地與生活習性。這款遊戲最適合家長陪孩子一起玩，遇到需要閱讀的題目時可以一起念題、討論答案，讓動物知識變成輕鬆互動。",
-        how: ["選擇一個動物主題關卡。", "閱讀題目或請家長一起念。", "從選項中選出最合適的答案。", "完成本關題目後解鎖下一個主題。"],
-        parent: "這款遊戲可以讓孩子練習動物知識、記憶與簡單閱讀。答錯時應保持鼓勵，重點是一起學習和討論。",
-        faq: [["幼兒可以玩嗎？", "可以，但建議家長陪同念題。"], ["這是考試嗎？", "不是。它是親子動物知識遊戲。"], ["可以練習什麼？", "可以練習動物知識、記憶和閱讀理解。"]],
+        intro: "動物小博士是 WeightPlay 的親子動物知識問答遊戲。每一關以不同地區或主題動物為核心，透過圖片、簡短題目和選項讓玩家認識動物名稱、棲地、身體特徵與生活習性。這款遊戲最適合家長陪孩子一起玩，年紀較小的孩子可以先看圖片和聽題目，年紀較大的孩子則能自己閱讀並思考答案。每關都保持短時間，重點是激發好奇、記住動物特徵，而不是製造考試壓力。",
+        how: ["選擇一個動物地區或主題關卡。", "觀察圖片，閱讀題目或請家長一起念。", "討論動物線索後，從選項中選出最合適的答案。", "完成本關題目後解鎖下一個動物主題。"],
+        strategyTips: ["先看圖片，再閱讀題目。", "答題前可以一起說說動物住在哪裡、身上有什麼明顯特徵。", "答錯時把它當成新知識，不要急著責備。"],
+        parent: "這款遊戲可以讓孩子透過短題目練習動物知識、記憶、圖片觀察和簡單閱讀。分數與進度只用於鼓勵和本機紀錄，不是學校考試、智力測驗或正式能力評量。",
+        faq: [["幼兒可以玩嗎？", "可以，但建議家長陪同念題，讓孩子先看圖片再討論。"], ["這是考試嗎？", "不是。它是親子動物知識遊戲，重點是一起學習。"], ["可以練習什麼？", "可以練習動物知識、記憶、圖片觀察和閱讀理解。"], ["答錯會怎樣？", "答錯只會提供學習機會，不會用羞辱或排名文字比較孩子。"]],
       },
       "zoo-helper-day": {
         title: "動物園幫忙日",
