@@ -148,6 +148,15 @@
     acacia: "leaf-right",
   };
 
+  const coverMasks = {
+    grass: "../../assets/safari-mask-grass.svg",
+    "leaf-left": "../../assets/safari-mask-leaf.svg",
+    "leaf-right": "../../assets/safari-mask-leaf.svg",
+    "leaf-top": "../../assets/safari-mask-leaf.svg",
+    water: "../../assets/safari-mask-water.svg",
+    dust: "../../assets/safari-mask-dust.svg",
+  };
+
   const stages = [
     { habitat: "sunny", targets: [["lion", 50, 63, 62, "grass"], ["elephant", 18, 72, 54, "leaf-left"], ["giraffe", 82, 57, 58, "leaf-right"], ["zebra", 69, 79, 50, "grass"], ["monkey", 28, 47, 42, "leaf-top"], ["bird", 40, 26, 36], ["paw", 58, 84, 32, "dust"], ["banana", 32, 76, 32, "grass"]] },
     { habitat: "river", theme: "river", targets: [["hippo", 24, 72, 60, "water"], ["elephant", 75, 67, 56, "leaf-right"], ["frog", 42, 82, 34, "water"], ["bird", 63, 34, 38], ["shell", 18, 84, 32, "water"], ["leaf", 86, 78, 32, "grass"], ["zebra", 52, 56, 46, "leaf-top"], ["paw", 36, 62, 30, "dust"]] },
@@ -318,6 +327,13 @@
       button.style.setProperty("--size", `${size}px`);
       button.setAttribute("aria-label", t(`targets.${id}`));
       button.textContent = icons[id];
+      const mask = document.createElement("img");
+      mask.className = "cover-mask";
+      mask.src = coverMasks[coverType] || coverMasks.grass;
+      mask.alt = "";
+      mask.decoding = "async";
+      mask.draggable = false;
+      button.appendChild(mask);
       button.addEventListener("click", (event) => {
         event.stopPropagation();
         chooseTarget(index, button);

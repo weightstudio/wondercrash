@@ -222,24 +222,14 @@ body {
   overflow: hidden;
 }
 
-.stage-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
 .stage-card.unlocked:active {
   transform: scale(0.97);
 }
 
-.stage-card.unlocked:hover::before {
-  opacity: 1;
+.stage-card.unlocked:hover {
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent),
+    rgba(255, 255, 255, 0.03);
 }
 
 .stage-card.locked {
