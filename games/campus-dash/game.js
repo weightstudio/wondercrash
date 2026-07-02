@@ -56,10 +56,10 @@
       score: "分數",
       time: "時間",
       combo: "連擊",
-      startTitle: "選擇路線，快速衝刺。",
-      startText: "點左邊或右邊，也可以滑動，在三條路線之間閃避障礙。",
+      startTitle: "選好路線，快速衝刺。",
+      startText: "點左邊或右邊，或左右滑動，在三條路線之間閃避障礙。",
       start: "開始",
-      resultTitle: "奔跑完成！",
+      resultTitle: "跑酷完成！",
       resultText: "分數 {score}  最佳 {best}",
       again: "再跑一次",
       lobby: "大廳",
@@ -68,7 +68,6 @@
       emptyRank: "還沒有紀錄",
     },
   };
-
   function loadImage(src) {
     const image = new Image();
     image.src = src;

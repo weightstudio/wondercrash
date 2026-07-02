@@ -155,18 +155,18 @@
       ],
     },
     "garden-tiles": {
-      title: "Garden Tile Match",
+      title: "Pet Garden Tiles",
       age: "Family",
       difficulty: "Relaxed",
       time: "3-5 minutes",
       skills: ["Memory", "Focus", "Problem Solving"],
       intro:
-        "Garden Tile Match is a calm matching game with large tiles and no timer. It is designed for relaxed daily play, including older players or families who prefer a quieter pace. The game focuses on simple visual matching and a comfortable interface.",
+        "Pet Garden Tiles is a calm matching game with large tiles and no timer. It is designed for relaxed daily play, including older players or families who prefer a quieter pace. The game focuses on simple visual matching, cozy animal-garden imagery, and a comfortable interface.",
       how: ["Look for matching garden tiles.", "Tap tiles to select and match.", "Clear the stage at your own pace.", "Move to the next calm puzzle."],
       parent:
         "This game supports relaxed focus and memory practice. It avoids time pressure and is meant for comfort, not performance comparison.",
       faq: [
-        ["Is Garden Tile Match timed?", "No. It is designed for calm play."],
+        ["Is Pet Garden Tiles timed?", "No. It is designed for calm play."],
         ["Who is it for?", "It is good for family and relaxed casual players."],
         ["Does it rank players?", "No. It focuses on local progress and comfort."],
       ],

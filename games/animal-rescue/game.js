@@ -81,65 +81,65 @@ const dictionary = {
     farm: "Farm Road",
   },
   "zh-Hant": {
-    title: "動物回家路",
-    language: "語言",
-    stage: "路線",
-    moves: "步數",
-    fruit: "水果",
-    chooseTrail: "選擇路線",
-    start: "開始",
-    locked: "未解鎖",
-    complete: "已完成",
-    hint: "點旁邊的格子，帶動物回到家。",
-    loading: "載入中",
-    undo: "上一步",
-    reset: "重來",
-    trailClear: "回家成功！",
-    allClear: "動物全部回家！",
-    result: "{animal} 回家了，拿到 {fruit} 個水果，共走 {moves} 步。",
-    next: "下一關",
-    retry: "再玩一次",
-    trails: "路線",
-    lobby: "回大廳",
-    lockedToast: "這條路線還沒解鎖。",
-    wrongTile: "請點旁邊的格子。",
-    lion: "小獅子",
-    panda: "熊貓",
-    elephant: "小象",
-    turtle: "烏龜",
-    rabbit: "兔子",
-    penguin: "企鵝",
-    fox: "狐狸",
-    monkey: "猴子",
-    koala: "無尾熊",
-    giraffe: "長頸鹿",
-    dolphin: "海豚",
-    cow: "乳牛",
-    forest: "森林小路",
-    bamboo: "竹林花園",
-    river: "河岸彎道",
-    meadow: "陽光草地",
-    ice: "冰雪小徑",
-    farm: "農場道路",
+    title: "\u52d5\u7269\u56de\u5bb6\u8def",
+    language: "\u8a9e\u8a00",
+    stage: "\u8def\u7dda",
+    moves: "\u6b65\u6578",
+    fruit: "\u6c34\u679c",
+    chooseTrail: "\u9078\u64c7\u8def\u7dda",
+    start: "\u958b\u59cb",
+    locked: "\u672a\u89e3\u9396",
+    complete: "\u5b8c\u6210",
+    hint: "\u9ede\u4e0b\u4e00\u683c\u9053\u8def\uff0c\u5e6b\u52d5\u7269\u8d70\u56de\u5bb6\u3002",
+    loading: "\u8f09\u5165\u4e2d",
+    undo: "\u4e0a\u4e00\u6b65",
+    reset: "\u91cd\u7f6e",
+    trailClear: "\u8def\u7dda\u6210\u529f\uff01",
+    allClear: "\u6240\u6709\u52d5\u7269\u90fd\u56de\u5bb6\u4e86\uff01",
+    result: "{animal} \u56de\u5230\u5bb6\uff0c\u5e36\u56de {fruit} \u500b\u6c34\u679c\uff0c\u7e3d\u5171\u8d70\u4e86 {moves} \u6b65\u3002",
+    next: "\u4e0b\u4e00\u95dc",
+    retry: "\u518d\u73a9\u4e00\u6b21",
+    trails: "\u8def\u7dda",
+    lobby: "\u5927\u5ef3",
+    lockedToast: "\u9019\u689d\u8def\u7dda\u5c1a\u672a\u89e3\u9396\u3002",
+    wrongTile: "\u8acb\u9078\u64c7\u65c1\u908a\u7684\u683c\u5b50\u3002",
+    lion: "\u5c0f\u7345\u5b50",
+    panda: "\u8c93\u718a",
+    elephant: "\u5927\u8c61",
+    turtle: "\u70cf\u9f9c",
+    rabbit: "\u5154\u5b50",
+    penguin: "\u4f01\u9d5d",
+    fox: "\u72d0\u72f8",
+    monkey: "\u7334\u5b50",
+    koala: "\u7121\u5c3e\u718a",
+    giraffe: "\u9577\u9838\u9e7f",
+    dolphin: "\u6d77\u8c5a",
+    cow: "\u4e73\u725b",
+    forest: "\u68ee\u6797\u5c0f\u8def",
+    bamboo: "\u7af9\u6797\u82b1\u5712",
+    river: "\u6cb3\u7554\u5f4e\u9053",
+    meadow: "\u967d\u5149\u8349\u5730",
+    ice: "\u51b0\u96ea\u5c0f\u8def",
+    farm: "\u8fb2\u5834\u9053\u8def",
   },
 };
 
 const animalIcons = {
-  lion: "🦁",
-  panda: "🐼",
-  elephant: "🐘",
-  turtle: "🐢",
-  rabbit: "🐰",
-  penguin: "🐧",
-  fox: "🦊",
-  monkey: "🐵",
-  koala: "🐨",
-  giraffe: "🦒",
-  dolphin: "🐬",
-  cow: "🐮",
+  lion: "Lion",
+  panda: "Panda",
+  elephant: "Elephant",
+  turtle: "Turtle",
+  rabbit: "Rabbit",
+  penguin: "Penguin",
+  fox: "Fox",
+  monkey: "Monkey",
+  koala: "Koala",
+  giraffe: "Giraffe",
+  dolphin: "Dolphin",
+  cow: "Cow",
 };
 
-const fruitIcons = ["🍓", "🍇", "🍎", "🍌", "🥕"];
+const fruitIcons = ["Apple", "Banana", "Berry", "Grape", "Orange"];
 
 const levels = [
   { animal: "lion", biome: "forest", start: [0, 4], home: [4, 0], blocks: [[1, 3], [2, 3], [3, 1]], fruits: [[0, 2], [3, 2]], par: 9 },
@@ -253,9 +253,9 @@ function renderStageSelect() {
           <span class="mini-animal">${animalIcons[level.animal]}</span>
           <span>
             <strong>${level.id}. ${t(level.animal)}</strong>
-            <span>${t(level.biome)} · ${locked ? t("locked") : stars ? t("complete") : t("start")}</span>
+            <span>${t(level.biome)} - ${locked ? t("locked") : stars ? t("complete") : t("start")}</span>
           </span>
-          <span class="stage-stars">${"★".repeat(stars)}${"☆".repeat(3 - stars)}</span>
+          <span class="stage-stars">${"\u2605".repeat(stars)}${"\u2606".repeat(3 - stars)}</span>
         </button>
       `;
     })
@@ -316,8 +316,20 @@ function renderBoard() {
       button.className = `tile ${tileClass(key, blockSet, waterSet, pathSet, current)}`;
       button.dataset.x = String(col);
       button.dataset.y = String(row);
-      button.textContent = tileIcon(pos, key, blockSet, waterSet);
-      button.setAttribute("aria-label", button.textContent || "tile");
+      const icon = tileIcon(pos, key, blockSet, waterSet);
+      if (icon) {
+        const label = document.createElement("span");
+        label.className = "tile-label";
+        label.textContent = icon;
+        button.append(label);
+      }
+      if (pathSet.has(key) && key !== current) {
+        const marker = document.createElement("span");
+        marker.className = "trail-mark";
+        marker.setAttribute("aria-hidden", "true");
+        button.append(marker);
+      }
+      button.setAttribute("aria-label", icon || "tile");
       board.append(button);
     }
   }
@@ -335,10 +347,10 @@ function tileClass(key, blockSet, waterSet, pathSet, current) {
 function tileIcon(pos, key, blockSet, waterSet) {
   const level = state.level;
   if (key === keyOf(state.position)) return animalIcons[level.animal];
-  if (key === keyOf(level.home)) return "🏡";
+  if (key === keyOf(level.home)) return "Home";
   if (state.fruits.has(key)) return fruitIcons[(level.id + pos[0] + pos[1]) % fruitIcons.length];
-  if (blockSet.has(key)) return "🪨";
-  if (waterSet.has(key)) return "💧";
+  if (blockSet.has(key)) return "Rock";
+  if (waterSet.has(key)) return "Water";
   return "";
 }
 
@@ -415,7 +427,7 @@ function finishLevel() {
   saveProgress();
   resultTitle.textContent = level.id === levels.length ? t("allClear") : t("trailClear");
   resultText.textContent = t("result", { animal: t(level.animal), fruit: state.collected, moves: state.moves });
-  starLine.textContent = "★".repeat(stars) + "☆".repeat(3 - stars);
+  starLine.textContent = "\u2605".repeat(stars) + "\u2606".repeat(3 - stars);
   nextBtn.classList.toggle("hidden", level.id >= levels.length);
   resultPanel.classList.remove("hidden");
   window.WonderSound?.play("win");

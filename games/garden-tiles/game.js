@@ -30,7 +30,7 @@
 
   const dictionary = {
     en: {
-      title: "Garden Tile Match",
+      title: "Pet Garden Tiles",
       language: "Language",
       level: "Level",
       moves: "Moves",
@@ -49,27 +49,26 @@
       allClear: "All levels cleared.",
     },
     "zh-Hant": {
-      title: "花園配對",
-      language: "語言",
-      level: "關卡",
-      moves: "步數",
-      pairs: "配對",
-      chooseLevel: "選擇關卡",
-      locked: "關卡尚未解鎖",
-      selectFirst: "先點一張，再找相同的一張。",
-      matched: "配對成功。",
-      miss: "再試另一組。",
-      clear: "關卡完成",
-      result: "{moves} 步，完成 {pairs} 組配對。",
-      next: "下一關",
-      again: "再玩一次",
-      levels: "選關",
-      lobby: "大廳",
-      allClear: "全部關卡完成。",
+      title: "\u5bf5\u7269\u82b1\u5712\u65b9\u584a",
+      language: "\u8a9e\u8a00",
+      level: "\u95dc\u5361",
+      moves: "\u6b65\u6578",
+      pairs: "\u914d\u5c0d",
+      chooseLevel: "\u9078\u64c7\u95dc\u5361",
+      locked: "\u95dc\u5361\u5c1a\u672a\u89e3\u9396",
+      selectFirst: "\u5148\u9078\u4e00\u5f35\u65b9\u584a\uff0c\u518d\u627e\u51fa\u76f8\u540c\u7684\u914d\u5c0d\u3002",
+      matched: "\u914d\u5c0d\u6210\u529f\uff01",
+      miss: "\u518d\u8a66\u8a66\u53e6\u4e00\u7d44\u3002",
+      clear: "\u95dc\u5361\u5b8c\u6210",
+      result: "\u7528\u4e86 {moves} \u6b65\uff0c\u5b8c\u6210 {pairs} \u7d44\u914d\u5c0d\u3002",
+      next: "\u4e0b\u4e00\u95dc",
+      again: "\u518d\u73a9\u4e00\u6b21",
+      levels: "\u9078\u95dc",
+      lobby: "\u5927\u5ef3",
+      allClear: "\u5168\u90e8\u95dc\u5361\u5b8c\u6210\u3002",
     },
   };
-
-  const icons = ["🌹", "🌻", "🌷", "🦋", "🐦", "🍓", "🍎", "🧺", "🌿", "🍄", "🪴", "☕", "🏡", "🌼", "🐝", "🥕", "🧤", "💧"];
+  const icons = ["Cat", "Dog", "Bird", "Bee", "Fish", "Bunny", "Flower", "Leaf", "Sun", "Moon", "Tree", "Seed", "Paw", "Nest", "Apple", "Berry", "Duck", "Snail"];
   const levels = [
     { pairs: 6, cols: 4, starMoves: [12, 15] },
     { pairs: 8, cols: 4, starMoves: [16, 20] },
@@ -280,7 +279,7 @@
     unlocked = Math.max(unlocked, Math.min(levels.length, levelNumber + 1));
     saveProgress();
     resultTitle.textContent = t("clear");
-    stars.textContent = "★".repeat(starCount) + "☆".repeat(3 - starCount);
+    stars.textContent = "\u2605".repeat(starCount) + "\u2606".repeat(3 - starCount);
     resultText.textContent = t("result", { moves, pairs: matchedPairs });
     nextBtn.classList.toggle("hidden", currentLevelIndex >= levels.length - 1);
     resultPanel.classList.remove("hidden");
