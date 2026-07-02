@@ -2,27 +2,27 @@ window.WONDER_DATA = {
   assets: {
     images: {
       bg: "assets/battle-bg.webp",
-      hero: "assets/hero.png",
+      hero: "assets/wonder-lion-hero.png",
       wall: "assets/wall.webp",
       eraser: "assets/eraser.png",
       pencil: "assets/weapon-pencil.png",
       ruler: "assets/weapon-ruler.png"
     },
     enemies: [
-"assets/enemy-toilet.png",
-"assets/enemy-tv.png",
-"assets/enemy-fridge.png",
-"assets/enemy-wardrobe.png",
-"assets/enemy-surveillance.png",
-"assets/enemy-books.png",
-"assets/enemy-clock.png",
-"assets/enemy-pencilbox.png"
+"assets/wonder-beast-boar.png",
+"assets/wonder-beast-hyena.png",
+"assets/wonder-beast-rhino.png",
+"assets/wonder-beast-buffalo.png",
+"assets/wonder-beast-hawk.png",
+"assets/wonder-beast-bear.png",
+"assets/wonder-beast-tiger.png",
+"assets/wonder-beast-crocodile.png"
     ]
   },
   enemyTypes: [
 {
-      id: "toilet",
-      name: "衝鋒馬桶",
+      id: "boar",
+      name: "Wild Boar",
       imageIndex: 0,
       role: "runner",
       hpScale: 0.75,
@@ -33,8 +33,8 @@ window.WONDER_DATA = {
       ability: "runner"
     },
 {
-      id: "tv",
-      name: "搖擺電視",
+      id: "hyena",
+      name: "Hyena Trickster",
       imageIndex: 1,
       role: "wobbler",
       hpScale: 1,
@@ -45,8 +45,8 @@ window.WONDER_DATA = {
       ability: "zigzag"
     },
 {
-      id: "fridge",
-      name: "厚重冰箱",
+      id: "rhino",
+      name: "Armored Rhino",
       imageIndex: 2,
       role: "tank",
       hpScale: 1.85,
@@ -57,8 +57,8 @@ window.WONDER_DATA = {
       ability: "armor"
     },
 {
-      id: "wardrobe",
-      name: "重擊衣櫃",
+      id: "buffalo",
+      name: "Charging Buffalo",
       imageIndex: 3,
       role: "breaker",
       hpScale: 1.25,
@@ -69,8 +69,8 @@ window.WONDER_DATA = {
       ability: "breaker"
     },
 {
-      id: "surveillance",
-      name: "突進監視器",
+      id: "hawk",
+      name: "Sky Hawk",
       imageIndex: 4,
       role: "dasher",
       hpScale: 0.9,
@@ -81,8 +81,8 @@ window.WONDER_DATA = {
       ability: "dash"
     },
 {
-      id: "books",
-      name: "魔法書堆",
+      id: "bear",
+      name: "Black Bear",
       imageIndex: 5,
       role: "caster",
       hpScale: 1.35,
@@ -93,8 +93,8 @@ window.WONDER_DATA = {
       ability: "zigzag"
     },
 {
-      id: "clock",
-      name: "急跑鬧鐘",
+      id: "tiger",
+      name: "Swift Tiger",
       imageIndex: 6,
       role: "sprinter",
       hpScale: 0.82,
@@ -105,8 +105,8 @@ window.WONDER_DATA = {
       ability: "dash"
     },
 {
-      id: "pencilbox",
-      name: "鉛筆盒衝車",
+      id: "crocodile",
+      name: "Crocodile King",
       imageIndex: 7,
       role: "bruiser",
       hpScale: 1.55,
@@ -219,7 +219,7 @@ window.WONDER_DATA = {
 {
       id: "coinMultiplier",
       name: "金幣磁鐵",
-      desc: "之後擊敗怪物金幣 +30%",
+      desc: "之後擊敗野獸金幣 +30%",
       icon: "assets/upgrade-coin.png",
       effect: {
         coinMultiplier: 0.3

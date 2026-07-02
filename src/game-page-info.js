@@ -1,19 +1,19 @@
 (function () {
   const games = {
     "wonder-crash": {
-      title: "Wonder Crash",
+      title: "Fantasy Lion Defense",
       age: "5+",
       difficulty: "Medium",
       time: "5-8 minutes",
       skills: ["Reaction", "Focus", "Hand-Eye Coordination"],
       intro:
-        "Wonder Crash is a mobile-friendly defense game where players move a hero, launch school-supply weapons, and protect a wall from incoming monsters. The game uses short stages, weapon cooldowns, upgrades, and clear win or retry moments so children can practice timing and attention in a playful fantasy setting. It is designed as a fun action game first, with progress tracking and upgrades that make each session feel meaningful without creating pressure.",
-      how: ["Move the hero left and right.", "Weapons fire automatically when their cooldowns finish.", "Defeat each wave before the wall is destroyed.", "Use coins and diamonds to improve long-term power."],
+        "Fantasy Lion Defense is a mobile-friendly animal defense game where players move a brave lion hero, launch playful magic-supply weapons, and protect a fantasy wall from fierce wild beasts. The game uses short stages, weapon cooldowns, upgrades, boss beasts, and clear win or retry moments so players can practice timing and attention in a playful fantasy setting. It is designed as a fun action game first, with progress tracking and upgrades that make each session feel meaningful without creating pressure.",
+      how: ["Move the lion hero left and right.", "Weapons fire automatically when their cooldowns finish.", "Defeat each wave of wild beasts before the wall is destroyed.", "Use coins and diamonds to improve long-term power."],
       parent:
         "This game is designed for short action practice sessions. It may help children practice reaction, focus, and hand-eye coordination through simple movement and timing. Scores and progress are for fun and local progress tracking only.",
       faq: [
-        ["Is Wonder Crash free to play?", "Yes. Wonder Crash runs in the browser on WeightPlay."],
-        ["What age is Wonder Crash for?", "It is recommended for age 5+ because it uses timing, upgrades, and simple action choices."],
+        ["Is Fantasy Lion Defense free to play?", "Yes. Fantasy Lion Defense runs in the browser on WeightPlay."],
+        ["What age is Fantasy Lion Defense for?", "It is recommended for age 5+ because it uses timing, upgrades, and simple action choices."],
         ["Does this game measure ability?", "No. It is a game for fun practice and local progress tracking, not a test or diagnosis."],
       ],
     },
@@ -449,8 +449,8 @@
         title: "奇幻獅子守城",
         difficulty: "中等",
         time: "5-8 分鐘",
-        intro: "奇幻獅子守城是 WeightPlay 的動作防衛遊戲。玩家控制獅子主角左右移動，讓橡皮擦、鉛筆等文具武器依照冷卻自動發射，阻止怪物靠近城牆。遊戲包含 30 個關卡、波次推進、武器裝備、合成升級、角色強化、城牆強化與鑽石能力，適合喜歡短時間動作挑戰與逐步變強的玩家。每場戰鬥都需要觀察敵人位置、掌握武器冷卻，並在過關後用金幣與鑽石做長期成長。",
-        how: ["拖曳或點擊畫面控制獅子左右移動。", "武器冷卻結束後會自動攻擊敵人。", "守住城牆並擊敗每一波怪物。", "用金幣升級角色、武器與城牆，也可以使用鑽石強化特殊能力。"],
+        intro: "奇幻獅子守城是 WeightPlay 的動物防衛遊戲。玩家控制獅子主角左右移動，讓橡皮擦、鉛筆等奇幻文具武器依照冷卻自動發射，阻止野豬、鬣狗、犀牛、水牛、猛鷹、黑熊、老虎與鱷魚獸王靠近城牆。遊戲包含 30 個關卡、波次推進、武器裝備、合成升級、角色強化、城牆強化與鑽石能力，適合喜歡短時間動作挑戰與逐步變強的玩家。每場戰鬥都需要觀察野獸位置、掌握武器冷卻，並在過關後用金幣與鑽石做長期成長。",
+        how: ["拖曳或點擊畫面控制獅子左右移動。", "武器冷卻結束後會自動攻擊野獸。", "守住城牆並擊敗每一波兇猛野獸。", "用金幣升級獅子英雄、武器與城牆，也可以使用鑽石強化特殊能力。"],
         parent: "這款遊戲可以讓孩子透過短時間動作挑戰練習反應力、專注力與手眼協調。遊戲有升級與關卡進度，但分數、金幣與強化只用於遊戲樂趣和本機進度紀錄，不是正式能力評量。",
         faq: [["奇幻獅子守城適合幾歲？", "建議 5+，因為需要左右移動、觀察冷卻與簡單升級選擇。"], ["可以升級武器嗎？", "可以。玩家可以升級武器，也能透過裝備與合成讓戰鬥變得更有策略。"], ["城牆被打破會怎樣？", "城牆生命歸零就會挑戰失敗，可以回去強化後再試一次。"], ["這款遊戲會評量孩子能力嗎？", "不會。它只是透過遊戲提供反應、專注與手眼協調的趣味練習。"]],
       },

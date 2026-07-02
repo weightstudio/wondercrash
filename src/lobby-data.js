@@ -17,7 +17,7 @@ window.WONDER_LOBBY = {
   games: [
     {
       id: "wonder-crash",
-      title: { en: "Lion Wonder Crash", "zh-Hant": "奇幻獅子守城" },
+      title: { en: "Fantasy Lion Defense", "zh-Hant": "奇幻獅子守城" },
       status: "playable",
       statusText: { en: "Playable", "zh-Hant": "可遊玩" },
       type: { en: "Animal Defense", "zh-Hant": "動物防衛" },
@@ -27,17 +27,17 @@ window.WONDER_LOBBY = {
       ageLabel: "5+",
       href: "games/wonder-crash/",
       description: {
-        en: "Help the lion mascot guard a fantasy wall with playful school-supply weapons.",
-        "zh-Hant": "幫助獅子主角用有趣的文具武器守住奇幻城牆。",
+        en: "Help the lion hero guard a fantasy wall from fierce wild beasts with playful magic-supply weapons.",
+        "zh-Hant": "幫助獅子英雄使用奇幻文具武器，守住城牆並擊退兇猛野獸。",
       },
       meta: {
-        en: ["Lion Hero", "30 Levels", "Diamond Upgrades"],
-        "zh-Hant": ["獅子英雄", "30 關", "鑽石強化"],
+        en: ["Lion Hero", "Wild Beasts", "30 Levels"],
+        "zh-Hant": ["獅子英雄", "野獸敵人", "30 關"],
       },
       art: {
         kind: "image",
         background: "assets/wonder-crash-cover.webp",
-        hero: "assets/hero.png",
+        hero: "assets/wonder-lion-hero.png",
         hideHero: true,
       },
     },
