@@ -25,6 +25,12 @@
     });
   }
 
+  function isVisible(element) {
+    if (!element || element.hidden || element.classList.contains("hidden")) return false;
+    const rect = element.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
+  }
+
   function focusPlayableArea(element) {
     if (!element || element.classList.contains("hidden")) return;
     window.requestAnimationFrame(() => {
@@ -35,21 +41,62 @@
     });
   }
 
-  function installPlayableFocus() {
+  function focusGame() {
     const selectors = [
+      "#playArea",
       "#playPanel",
+      "#gameArea",
+      "#gameStage",
+      "#gameBoard",
       "#gameBoardPanel",
       "#gameHud",
+      "#board",
       ".battle-panel",
       ".game-panel",
       ".play-panel",
       ".game-board-panel",
+      ".quiz-stage",
+      ".play-area",
+      ".stage-area",
+      ".game-area",
+      ".game-stage",
+      ".game-board",
+      "canvas",
+      "main",
+    ];
+    const target = selectors
+      .map((selector) => document.querySelector(selector))
+      .find((element) => isVisible(element));
+    focusPlayableArea(target);
+  }
+
+  function installPlayableFocus() {
+    const selectors = [
+      "#playArea",
+      "#playPanel",
+      "#gameArea",
+      "#gameStage",
+      "#gameBoard",
+      "#gameBoardPanel",
+      "#gameHud",
+      "#board",
+      ".battle-panel",
+      ".game-panel",
+      ".play-panel",
+      ".game-board-panel",
+      ".quiz-stage",
+      ".play-area",
+      ".stage-area",
+      ".game-area",
+      ".game-stage",
+      ".game-board",
+      "canvas",
     ];
     const nodes = Array.from(document.querySelectorAll(selectors.join(",")));
     nodes.forEach((node) => {
       const observer = new MutationObserver(() => focusPlayableArea(node));
       observer.observe(node, { attributes: true, attributeFilter: ["class", "style", "hidden"] });
-      if (!node.classList.contains("hidden") && node.offsetParent !== null) focusPlayableArea(node);
+      if (isVisible(node)) focusPlayableArea(node);
     });
   }
 
@@ -92,6 +139,10 @@
   document.documentElement.style.userSelect = "none";
   document.body?.style.setProperty("-webkit-user-select", "none");
   document.body?.style.setProperty("user-select", "none");
+  window.WeightPlayGame = {
+    ...(window.WeightPlayGame || {}),
+    focusGame,
+  };
   markNonDraggableMedia();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", markNonDraggableMedia, { once: true });

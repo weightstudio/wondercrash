@@ -3,6 +3,7 @@
   const localeKey = "weightplayLocale";
   const unlockKey = "weightplay_bubble_bakery_unlocked";
   const starKey = "weightplay_bubble_bakery_stars";
+  const progressKey = "weightplay_bubble_bakery_progress";
 
   const text = {
     en: {
@@ -25,6 +26,16 @@
       resultLose: "Collect the needed bubbles before moves run out.",
       smallGroup: "Tap 2 or more connected matching bubbles.",
       collect: "Collect {n}",
+      skillReport: "Skill Report",
+      previousBest: "Previous Best",
+      todayScore: "Today",
+      improvement: "Improvement",
+      logic: "Logic",
+      focus: "Focus",
+      problemSolving: "Problem Solving",
+      reportGreat: "Great progress! Your child planned groups well and stayed focused.",
+      reportGood: "Good effort! Try again to improve focus and finish more orders.",
+      reportNewBest: "Amazing progress! This is a new best score for this stage.",
     },
     "zh-Hant": {
       gameTitle: "動物泡泡烘焙坊",
@@ -46,6 +57,16 @@
       resultLose: "步數用完前，要收集訂單需要的泡泡。",
       smallGroup: "請點擊 2 個以上相連的相同泡泡。",
       collect: "收集 {n}",
+      skillReport: "能力小報告",
+      previousBest: "之前最佳",
+      todayScore: "本次分數",
+      improvement: "進步幅度",
+      logic: "邏輯",
+      focus: "專注",
+      problemSolving: "解題",
+      reportGreat: "很棒的進步！孩子有好好規劃泡泡群組，也維持了專注。",
+      reportGood: "努力得很好！再試一次，可以練習更專注並完成更多訂單。",
+      reportNewBest: "太棒了！這一關拿到新的最佳分數。",
     },  };
 
   const colors = [
@@ -83,6 +104,7 @@
     resultTitle: $("resultTitle"),
     starText: $("starText"),
     resultText: $("resultText"),
+    skillReport: $("skillReport"),
     nextStageBtn: $("nextStageBtn"),
     retryBtn: $("retryBtn"),
     resultStagesBtn: $("resultStagesBtn"),
@@ -127,6 +149,18 @@
 
   function saveStars() {
     localStorage.setItem(starKey, JSON.stringify(stars));
+  }
+
+  function readProgress() {
+    try {
+      return JSON.parse(localStorage.getItem(progressKey) || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function saveProgress(progress) {
+    localStorage.setItem(progressKey, JSON.stringify(progress));
   }
 
   function t(key, data = {}) {
@@ -430,6 +464,7 @@
   function finish(won) {
     busy = true;
     const stageNo = currentStage + 1;
+    const previousBest = Number(readProgress()[stageNo]?.bestScore || 0);
     let earned = 0;
     if (won) {
       earned = moves >= 7 ? 3 : moves >= 3 ? 2 : 1;
@@ -443,10 +478,48 @@
     nodes.resultPanel.classList.remove("hidden");
     nodes.resultTitle.textContent = won ? t("orderDone") : t("failed");
     nodes.resultText.textContent = won ? t("resultWin", { moves }) : t("resultLose");
-        nodes.starText.textContent = won ? starIcons(earned, 3) : t("failed");
+    nodes.starText.textContent = won ? starIcons(earned, 3) : t("failed");
+    renderSkillReport({ stageNo, won, earned, previousBest });
     nodes.nextStageBtn.classList.toggle("hidden", !won || currentStage >= stages.length - 1);
     playSound(won ? "success" : "error");
     track("game_complete", { level: stageNo, success: won, score, moves_left: moves });
+  }
+
+  function renderSkillReport({ stageNo, won, earned, previousBest }) {
+    const stage = stages[currentStage];
+    const moveRatio = moves / Math.max(1, stage.moves);
+    const orderScore = won ? 5 : Math.max(1, 3 - Object.values(orders).filter((need) => need > 0).length);
+    const skillScores = {
+      logic: clamp(won ? earned + 2 : orderScore, 1, 5),
+      focus: clamp(Math.round(moveRatio * 4) + (won ? 1 : 0), 1, 5),
+      problemSolving: clamp(won ? Math.max(3, earned + 1) : orderScore, 1, 5),
+    };
+    const progress = readProgress();
+    const previous = progress[stageNo] || {};
+    const bestScore = Math.max(previousBest, score);
+    const improvementPercent = previousBest > 0 ? Math.round(((score - previousBest) / previousBest) * 100) : (score > 0 ? 100 : 0);
+    progress[stageNo] = {
+      lastScore: score,
+      bestScore,
+      playCount: Number(previous.playCount || 0) + 1,
+      lastPlayedAt: new Date().toISOString(),
+      improvementPercent,
+      skillScores,
+    };
+    saveProgress(progress);
+
+    const message = bestScore > previousBest && previousBest > 0 ? t("reportNewBest") : (won ? t("reportGreat") : t("reportGood"));
+    const improvementText = improvementPercent > 0 ? `+${improvementPercent}%` : `${improvementPercent}%`;
+    nodes.skillReport.innerHTML = `
+      <strong>${t("skillReport")}</strong>
+      <div class="skill-score-row"><span>${t("previousBest")}</span><b>${previousBest}</b></div>
+      <div class="skill-score-row"><span>${t("todayScore")}</span><b>${score}</b></div>
+      <div class="skill-score-row"><span>${t("improvement")}</span><b>${improvementText}</b></div>
+      <div class="skill-stars"><span>${t("logic")}</span><b>${starIcons(skillScores.logic, 5)}</b></div>
+      <div class="skill-stars"><span>${t("focus")}</span><b>${starIcons(skillScores.focus, 5)}</b></div>
+      <div class="skill-stars"><span>${t("problemSolving")}</span><b>${starIcons(skillScores.problemSolving, 5)}</b></div>
+      <p>${message}</p>
+    `;
   }
 
   function starIcons(count, total) {
