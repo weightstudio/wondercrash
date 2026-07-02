@@ -188,15 +188,37 @@ async function main() {
     return;
   }
 
-  const accessToken = await createAccessToken();
-  const recent = await runReport(accessToken, `${lookbackDays}daysAgo`);
-  const total = await runReport(accessToken, "2020-01-01");
-  const stats = emptyStats(games, "ga4");
-  addRows(stats, games, recent.rows, "plays7d", "users7d");
-  addRows(stats, games, total.rows, "playsTotal");
-  rankStats(stats);
-  await fs.writeFile(statsPath, `${JSON.stringify(stats, null, 2)}\n`, "utf8");
-  await writeReport(stats, games);
+  try {
+    const accessToken = await createAccessToken();
+    const recent = await runReport(accessToken, `${lookbackDays}daysAgo`);
+    const total = await runReport(accessToken, "2020-01-01");
+    const stats = emptyStats(games, "ga4");
+    addRows(stats, games, recent.rows, "plays7d", "users7d");
+    addRows(stats, games, total.rows, "playsTotal");
+    rankStats(stats);
+    await fs.writeFile(statsPath, `${JSON.stringify(stats, null, 2)}\n`, "utf8");
+    await writeReport(stats, games);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    const note = [
+      `GA4 sync failed at ${new Date().toISOString()}.`,
+      "",
+      "The workflow kept the previous public game stats instead of failing the deployment.",
+      "Check GA4_PROPERTY_ID, GA4_CLIENT_EMAIL, GA4_PRIVATE_KEY, Analytics Data API access, and GA4 property permissions.",
+      "",
+      "Error:",
+      message,
+    ].join("\n");
+    console.warn(note);
+    try {
+      const existing = JSON.parse(await fs.readFile(statsPath, "utf8"));
+      await writeReport(existing, games, note);
+    } catch {
+      const stats = emptyStats(games, "ga4-error");
+      await fs.writeFile(statsPath, `${JSON.stringify(stats, null, 2)}\n`, "utf8");
+      await writeReport(stats, games, note);
+    }
+  }
 }
 
 main().catch((error) => {

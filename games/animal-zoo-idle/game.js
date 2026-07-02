@@ -6,8 +6,8 @@
 
   const ASSETS = {
     cover: "../../assets/animal-zoo-idle-cover.png",
-    stage: "../../assets/animal-zoo-idle-stage-bg.png",
-    lion: "../../assets/animal-zoo-idle-lion.png",
+    stage: "../../assets/animal-zoo-idle-stage-bg.webp",
+    lion: "../../assets/animal-zoo-idle-lion.webp",
     giraffe: "../../assets/animal-zoo-idle-giraffe.png",
     elephant: "../../assets/animal-zoo-elephant.png",
     panda: "../../assets/animal-zoo-panda.png",
