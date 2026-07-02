@@ -266,14 +266,16 @@
       time: "1-3 minutes",
       skills: ["Color Recognition", "Logic", "Hand-Eye Coordination"],
       intro:
-        "Shape Train is a preschool matching game where children send colorful shape passengers to the correct train cars. The controls are simple, the goals are visual, and the stages are short enough for early learners.",
-      how: ["Look at the shape passenger.", "Find the matching train car.", "Tap or drag the shape to the correct place.", "Complete the train to finish the stage."],
+        "Shape Train is a preschool animal train game where children help colorful shape passengers board the correct train cars. Each short stage focuses on a small set of visual choices, so young players can practice matching circles, triangles, squares, colors, and animal-themed cargo without needing to read long instructions. The game is built for quick mobile sessions with large targets, gentle feedback, and stage goals that parents can understand at a glance. It supports early classification practice through play while staying relaxed and pressure-free.",
+      how: ["Look at the animal shape passenger or cargo.", "Find the train car with the matching shape or color.", "Tap or drag the piece into the correct car.", "Fill every train car to finish the stage and unlock the next route."],
+      strategyTips: ["Say the shape name out loud before placing it.", "Look at both the outline and the color when a stage has similar pieces.", "If a child misses, encourage another look instead of rushing."],
       parent:
-        "This game may help young children practice shape matching, colors, and simple hand-eye coordination. It is for playful practice only.",
+        "This game may help young children practice color recognition, shape sorting, simple logic, and hand-eye coordination through picture-based play. Scores and progress are for encouragement only, not a formal learning test or developmental assessment.",
       faq: [
         ["Does Shape Train require reading?", "No. The main gameplay uses shapes and colors."],
-        ["What age is it for?", "It is recommended for age 3+."],
-        ["What skills does it practice?", "It practices matching, color recognition, and coordination."],
+        ["What age is it for?", "It is recommended for age 3+ because the goals are visual, simple, and short."],
+        ["What skills does it practice?", "It practices color recognition, shape sorting, early logic, and hand-eye coordination."],
+        ["Can parents play along?", "Yes. Parents can name each shape and color out loud to turn the stage into a short shared practice moment."],
       ],
     },
     "tiny-weather-rescue": {
@@ -575,10 +577,11 @@
         title: "動物形狀小火車",
         difficulty: "簡單",
         time: "1-3 分鐘",
-        intro: "動物形狀小火車是 WeightPlay 的幼兒形狀與顏色配對遊戲。玩家要把不同形狀和顏色的動物貨物送到正確車廂，讓小火車順利出發。關卡短、按鈕大、目標清楚，適合孩子用圖片和顏色做早期分類練習，也適合家長在旁邊一起說出形狀名稱。",
-        how: ["觀察目前的形狀貨物。", "找到形狀或顏色相符的車廂。", "點選或拖曳到正確位置。", "完成全部貨物後讓小火車出發。"],
-        parent: "這款遊戲可以讓孩子練習形狀辨識、顏色辨識、簡單邏輯與手眼協調。遊戲回饋以鼓勵為主，不做能力診斷。",
-        faq: [["需要看字嗎？", "不需要。主要玩法靠形狀和顏色。"], ["適合幾歲？", "建議 3+。"], ["可以練習什麼？", "可以練習形狀、顏色、分類和協調。"]],
+        intro: "動物形狀小火車是 WeightPlay 的幼兒形狀與顏色配對遊戲。玩家要幫不同形狀、不同顏色的動物乘客或貨物找到正確車廂，讓小火車順利出發。每一關都很短，目標以圖片和顏色為主，不需要大量閱讀，適合孩子用觀察、比較和分類來完成任務。家長也可以陪孩子一起說出圓形、三角形、正方形等形狀名稱，讓遊戲變成輕鬆的親子練習。",
+        how: ["觀察目前的動物形狀乘客或貨物。", "找到形狀或顏色相符的車廂。", "點選或拖曳到正確位置。", "完成全部車廂後讓小火車出發，並解鎖下一段路線。"],
+        strategyTips: ["放入車廂前，可以先一起念出形狀名稱。", "如果顏色相近，先看外框形狀再放入。", "答錯時鼓勵孩子再觀察一次，不需要催促。"],
+        parent: "這款遊戲可以讓孩子透過圖片互動練習形狀辨識、顏色辨識、簡單分類邏輯與手眼協調。分數與進度只用於鼓勵和本機紀錄，不是正式能力測驗或發展診斷。",
+        faq: [["需要看字嗎？", "不需要。主要玩法靠形狀、顏色和圖片提示。"], ["適合幾歲？", "建議 3+，因為關卡短、按鈕大，目標也很直覺。"], ["可以練習什麼？", "可以練習形狀、顏色、分類邏輯與手眼協調。"], ["家長可以怎麼陪玩？", "可以一起說出形狀和顏色，讓孩子用遊戲方式練習早期分類。"]],
       },
       "tiny-weather-rescue": {
         title: "動物幫幫隊",
