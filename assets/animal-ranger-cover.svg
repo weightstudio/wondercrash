@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" role="img" aria-label="Animal Ranger Tactics cover">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#72c7ff"/>
+      <stop offset="0.52" stop-color="#bde9ff"/>
+      <stop offset="1" stop-color="#f6dca8"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#3fa36b"/>
+      <stop offset="1" stop-color="#184f3c"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#16392d" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1254" height="1254" rx="92" fill="#f7e7bf"/>
+  <rect x="54" y="54" width="1146" height="1146" rx="74" fill="url(#sky)"/>
+  <path d="M54 797c190-93 344-91 500 0 175 102 349 68 646-18v421H54z" fill="url(#grass)"/>
+  <path d="M54 868c269-74 497-48 686 78 130 87 284 85 460 28v226H54z" fill="#287a55" opacity=".55"/>
+  <circle cx="1036" cy="184" r="86" fill="#ffd96d"/>
+  <g fill="#fff" opacity=".82">
+    <ellipse cx="224" cy="230" rx="117" ry="41"/>
+    <ellipse cx="310" cy="222" rx="95" ry="55"/>
+    <ellipse cx="407" cy="235" rx="132" ry="42"/>
+    <ellipse cx="812" cy="305" rx="117" ry="45"/>
+    <ellipse cx="904" cy="296" rx="94" ry="56"/>
+    <ellipse cx="994" cy="312" rx="132" ry="42"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="180" y="698" width="894" height="220" rx="42" fill="#32241b" opacity=".9"/>
+    <rect x="204" y="655" width="846" height="210" rx="44" fill="#f8c45a"/>
+    <text x="627" y="758" text-anchor="middle" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="80" font-weight="800" fill="#2d251e">ANIMAL</text>
+    <text x="627" y="835" text-anchor="middle" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="64" font-weight="800" fill="#2d251e">RANGER TACTICS</text>
+  </g>
+  <g filter="url(#soft)">
+    <g transform="translate(267 424)">
+      <ellipse cx="124" cy="247" rx="103" ry="51" fill="#172d28" opacity=".2"/>
+      <circle cx="124" cy="118" r="96" fill="#f2a23f"/>
+      <circle cx="88" cy="92" r="28" fill="#f7c96c"/>
+      <circle cx="160" cy="92" r="28" fill="#f7c96c"/>
+      <path d="M50 115c38-69 112-74 151 0-24 42-128 41-151 0z" fill="#b35b21"/>
+      <circle cx="97" cy="122" r="10" fill="#2c1e17"/>
+      <circle cx="151" cy="122" r="10" fill="#2c1e17"/>
+      <path d="M111 152c12 12 28 12 40 0" fill="none" stroke="#2c1e17" stroke-width="8" stroke-linecap="round"/>
+      <rect x="70" y="203" width="108" height="139" rx="42" fill="#f0a23a"/>
+      <rect x="95" y="224" width="58" height="96" rx="27" fill="#ffe0a2"/>
+      <path d="M36 242l-45 62M211 242l47 62" stroke="#f0a23a" stroke-width="32" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(654 379)">
+      <ellipse cx="155" cy="292" rx="118" ry="54" fill="#172d28" opacity=".2"/>
+      <rect x="84" y="93" width="142" height="222" rx="67" fill="#b8a08d"/>
+      <circle cx="155" cy="92" r="66" fill="#d6c3b0"/>
+      <circle cx="127" cy="82" r="9" fill="#2b2522"/>
+      <circle cx="183" cy="82" r="9" fill="#2b2522"/>
+      <path d="M135 112c17 13 35 13 52 0" fill="none" stroke="#2b2522" stroke-width="7" stroke-linecap="round"/>
+      <rect x="95" y="210" width="120" height="150" rx="56" fill="#8f7f72"/>
+      <path d="M50 184l-76-52M260 184l76-52" stroke="#8f7f72" stroke-width="34" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(466 285)">
+      <ellipse cx="160" cy="351" rx="135" ry="56" fill="#172d28" opacity=".18"/>
+      <rect x="103" y="34" width="114" height="260" rx="56" fill="#e0b45b"/>
+      <circle cx="160" cy="39" r="61" fill="#f0c76d"/>
+      <circle cx="136" cy="28" r="8" fill="#2b2522"/>
+      <circle cx="184" cy="28" r="8" fill="#2b2522"/>
+      <path d="M143 60c12 10 27 10 39 0" fill="none" stroke="#2b2522" stroke-width="7" stroke-linecap="round"/>
+      <rect x="82" y="229" width="156" height="162" rx="67" fill="#db9e43"/>
+      <circle cx="128" cy="285" r="16" fill="#8a5a32"/>
+      <circle cx="191" cy="285" r="16" fill="#8a5a32"/>
+      <path d="M95 368v74M224 368v74" stroke="#b57635" stroke-width="34" stroke-linecap="round"/>
+    </g>
+  </g>
+  <g opacity=".95">
+    <rect x="168" y="938" width="918" height="86" rx="43" fill="#fff7df"/>
+    <text x="627" y="996" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#355745">Plan habitats • protect wildlife • balance ecosystems</text>
+  </g>
+</svg>

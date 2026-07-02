@@ -143,6 +143,14 @@
         { icon: "?", en: ["Hint", "Use a hint if one target is hard to see."], "zh-Hant": ["提示", "找不到時可以使用提示。"] },
       ],
     },
+    "animal-ranger-tactics": {
+      title: { en: "Balance the reserve.", "zh-Hant": "平衡保護區。" },
+      steps: [
+        { icon: "1", en: ["Select", "Tap one habitat cell on the reserve map."], "zh-Hant": ["選擇", "點選保護區地圖上的一個棲地。"] },
+        { icon: "2", en: ["Act", "Use Patrol, Restore, or Research with limited actions."], "zh-Hant": ["行動", "在有限行動中使用巡守、修復或研究。"] },
+        { icon: "3", en: ["Plan", "End turns carefully and keep ecosystem balance high."], "zh-Hant": ["規劃", "謹慎結束回合，維持較高的生態平衡。"] },
+      ],
+    },
   };
 
   function gameIdFromPath() {
