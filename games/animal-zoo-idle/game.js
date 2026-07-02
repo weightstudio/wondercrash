@@ -237,8 +237,12 @@
   function render() {
     nodes.coinText.textContent = Math.floor(save.coins);
     nodes.incomeText.textContent = Math.floor(save.ticketBox);
-    nodes.habitatGrid.innerHTML = "";
-    nodes.habitatGrid.appendChild(renderPark());
+    const card = nodes.habitatGrid.querySelector(".zoo-stage-card");
+    if (!card) {
+      nodes.habitatGrid.appendChild(renderPark());
+      return;
+    }
+    updatePark(card);
   }
 
   function renderPark() {
@@ -269,12 +273,52 @@
       </div>
     `;
     renderVisitors(card.querySelector(".visitor-line"));
-    renderAnimals(card.querySelector(".animal-layer"));
+    const animalLayer = card.querySelector(".animal-layer");
+    renderAnimals(animalLayer);
+    animalLayer.dataset.animalIds = unlockedAnimals().map((animal) => animal.id).join(",");
     card.querySelector('[data-action="collect"]').addEventListener("click", collectTickets);
     card.querySelector('[data-action="care"]').addEventListener("click", careAnimals);
     card.querySelector('[data-action="upgrade"]').addEventListener("click", upgradeGate);
     card.querySelector('[data-action="recruit"]').addEventListener("click", recruitAnimal);
     return card;
+  }
+
+  function updatePark(card) {
+    const next = nextRecruit();
+    const hud = card.querySelector(".park-hud");
+    if (hud) {
+      hud.children[0].textContent = t("gate", { n: save.gateLevel });
+      hud.children[1].textContent = t("income", { n: incomePerTick() });
+      hud.children[2].textContent = `${t("animals")}: ${unlockedAnimals().length}/${animals.length}`;
+    }
+    const stage = card.querySelector(".savanna-stage");
+    if (stage) {
+      stage.classList.remove("stage-lv-1", "stage-lv-2", "stage-lv-3");
+      stage.classList.add(`stage-lv-${save.gateLevel}`);
+    }
+    const gate = card.querySelector(".gate img");
+    if (gate && !gate.src.endsWith(gateAsset())) gate.src = gateAsset();
+    const happyText = card.querySelector(".happy-meter b");
+    const happyFill = card.querySelector(".happy-meter i");
+    if (happyText) happyText.textContent = `${Math.round(save.happiness)}%`;
+    if (happyFill) happyFill.style.width = `${save.happiness}%`;
+    const upgrade = card.querySelector('[data-action="upgrade"]');
+    if (upgrade) {
+      upgrade.disabled = save.gateLevel >= 3;
+      upgrade.textContent = save.gateLevel >= 3 ? t("maxGate") : `${t("upgradeGate")} ${gateUpgradeCost()}`;
+    }
+    const recruit = card.querySelector('[data-action="recruit"]');
+    if (recruit) {
+      recruit.disabled = !next;
+      recruit.textContent = next ? `${t("recruit")} ${t(next.id)} ${next.cost}` : `${t("animals")} Max`;
+    }
+    const animalLayer = card.querySelector(".animal-layer");
+    const animalIds = unlockedAnimals().map((animal) => animal.id).join(",");
+    if (animalLayer && animalLayer.dataset.animalIds !== animalIds) {
+      animalLayer.innerHTML = "";
+      renderAnimals(animalLayer);
+      animalLayer.dataset.animalIds = animalIds;
+    }
   }
 
   function gateAsset() {
